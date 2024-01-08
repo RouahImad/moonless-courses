@@ -45,10 +45,9 @@ go.addEventListener("click", (e) => {
 
 window.addEventListener("scroll", (e) => {
     if (window.scrollY < 350) {
-        go.classList.add("hid");
+        go.style.opacity = 0;
         go.classList.remove("clicked");
-        console.log("0");
     } else {
-        go.classList.remove("hid");
+        go.style.opacity = 1;
     }
 });

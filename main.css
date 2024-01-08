@@ -135,8 +135,6 @@ ul {
         z-index: 999;
         transition: var(--main-transition);
         transition: bottom 0.9s;
-    }
-    & .go img.hid {
         opacity: 0;
     }
     & .intro {
