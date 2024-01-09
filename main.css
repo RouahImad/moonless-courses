@@ -150,7 +150,7 @@ ul {
     }
     & .intro {
         position: relative;
-        background-image: url(/img/moonless.jpg);
+        background-image: url("img/moonless.jpg");
         background-size: cover;
         height: 500px;
         min-height: 100px;
