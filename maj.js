@@ -1,19 +1,4 @@
-// let pdfContainer = document.getElementById("pdfContainer");
-// let iframe = document.querySelector("#pdfContainer + iframe");
-// let side = document.querySelector(".sidebar");
-// pdfContainer.addEventListener("click", function (e) {
-//     if (e.target && e.target.getAttribute("data")) {
-//         loadPDF(e.target.getAttribute("data"));
-//     }
-// });
-// function loadPDF(e) {
-//     var pdfPath = `${e}.pdf`;
-//     iframe.src = pdfPath;
-//     iframe.style.width = "100%";
-//     iframe.style.height = "95vh";
-//     iframe.style.border = "none";
-// }
-
+let side = document.querySelector(".sidebar");
 let sideLi = document.querySelectorAll(".sidebar ul li a");
 
 sideLi.forEach((li) => {
@@ -50,4 +35,30 @@ window.addEventListener("scroll", (e) => {
     } else {
         go.style.opacity = 1;
     }
+});
+
+let sm = document.querySelectorAll(".gi span");
+sm.forEach((s) => {
+    s.addEventListener("click", () => {
+        let s1L = document.querySelectorAll(`.gi .${s.textContent} li`);
+        let i = s.firstElementChild;
+        if (i.classList.contains("fa-arrow-up-wide-short")) {
+            i.classList.replace(
+                "fa-arrow-up-wide-short",
+                "fa-arrow-down-short-wide"
+            );
+        } else {
+            i.classList.replace(
+                "fa-arrow-down-short-wide",
+                "fa-arrow-up-wide-short"
+            );
+        }
+        s1L.forEach((li) => {
+            if (li.style.display === "block") {
+                li.style.display = "none";
+            } else {
+                li.style.display = "block";
+            }
+        });
+    });
 });
