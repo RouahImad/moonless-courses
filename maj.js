@@ -20,9 +20,10 @@ let go = document.querySelector(".content img");
 
 go.addEventListener("click", (e) => {
     window.scrollTo(0, 0);
-
     go.style.setProperty("bottom", "65vh");
-
+    sideLi.forEach((li) => {
+        li.classList.remove("active");
+    });
     setTimeout(function () {
         go.style.setProperty("bottom", "40px");
     }, 1000);
@@ -42,23 +43,10 @@ sm.forEach((s) => {
     s.addEventListener("click", () => {
         let s1L = document.querySelectorAll(`.gi .${s.textContent} li`);
         let i = s.firstElementChild;
-        if (i.classList.contains("fa-arrow-up-wide-short")) {
-            i.classList.replace(
-                "fa-arrow-up-wide-short",
-                "fa-arrow-down-short-wide"
-            );
-        } else {
-            i.classList.replace(
-                "fa-arrow-down-short-wide",
-                "fa-arrow-up-wide-short"
-            );
-        }
+        i.classList.toggle("fa-arrow-up-wide-short");
+        i.classList.toggle("fa-arrow-down-short-wide");
         s1L.forEach((li) => {
-            if (li.style.display === "block") {
-                li.style.display = "none";
-            } else {
-                li.style.display = "block";
-            }
+            li.classList.toggle("ac");
         });
     });
 });

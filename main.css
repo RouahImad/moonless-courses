@@ -105,8 +105,18 @@ ul {
     width: 100%;
     color: #333;
 }
+.sidebar h3,
 .sidebar h3 a {
+    transition: var(--main-transition);
     color: #333;
+}
+.sidebar h3:hover,
+.sidebar h3 a:hover {
+    color: var(--highlight-color);
+    transform: scale(1.1);
+}
+.sidebar ul li a {
+    transition: var(--main-transition);
 }
 .sidebar ul li a:hover,
 .sidebar ul li a.active {
@@ -140,7 +150,7 @@ ul {
     }
     & .intro {
         position: relative;
-        background-image: url(moonless.jpg);
+        background-image: url(/img/moonless.jpg);
         background-size: cover;
         height: 500px;
         min-height: 100px;
@@ -186,8 +196,7 @@ ul {
         }
     }
 }
-.content div > h3 {
-    position: sticky;
+.content .wrapper > div > h3 {
     font-size: 22px;
     margin: 15px 0 20px 0px;
 }
@@ -205,8 +214,10 @@ ul {
 }
 /* end content */
 /* courses */
-.gi ul {
-    list-style: circle;
+.content .wrapper > div > div > h3 {
+    text-align: center;
+    font-size: 17px;
+    color: var(--grey-color-dark);
 }
 .gi ul > span {
     display: block;
@@ -218,12 +229,18 @@ ul {
 .gi ul li {
     text-transform: capitalize;
     transition: var(--main-transition);
-    display: none;
     margin-left: 25px;
     margin-bottom: 5px;
     cursor: pointer;
     width: fit-content;
     position: relative;
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.gi ul li.ac {
+    max-height: 100px;
+    padding: 5px 10px;
 }
 .gi ul li a {
     color: black;
@@ -232,7 +249,7 @@ ul {
     content: "";
     transition: var(--main-transition);
     position: absolute;
-    left: -7px;
+    left: 4px;
     top: 50%;
     width: 5px;
     height: 5px;
@@ -253,8 +270,6 @@ ul {
     color: white;
 }
 .gi ul li:hover::after {
-    transform: scale(1.2);
-    left: -10px;
     background-color: var(--highlight-color);
 }
 /* end courses */
