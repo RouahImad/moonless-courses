@@ -9,6 +9,17 @@ sideLi.forEach((li) => {
         li.classList.add("active");
     });
 });
+sideLi.forEach((l) => {
+    if (!sideLi[1].classList.contains("active")) {
+        l.addEventListener("mouseenter", function () {
+            l.classList.add("active");
+        });
+
+        l.addEventListener("mouseleave", function () {
+            l.classList.remove("active");
+        });
+    }
+});
 let mon = document.querySelector(".mon");
 mon.addEventListener("click", () => {
     sideLi.forEach((li) => {
@@ -31,7 +42,11 @@ go.addEventListener("click", (e) => {
 let posin = document.querySelector(".content .posIn");
 let siLi = document.querySelectorAll(".content .wrapper > div");
 
-window.addEventListener("scroll", (e) => {
+window.addEventListener("scroll", () => {
+    sideLi.forEach((l) => {
+        l.is;
+        l.classList.remove("active");
+    });
     let { scrollHeight, scrollTop, clientHeight } = document.documentElement;
     const scrolled = (scrollTop / (scrollHeight - clientHeight)) * 100;
     posin.style.width = `${scrolled}%`;
@@ -42,13 +57,14 @@ window.addEventListener("scroll", (e) => {
     } else {
         go.style.opacity = 1;
     }
+
     let index;
     if (scrollTop >= siLi[0].offsetTop - 40) {
         siLi.forEach((e, i) => {
             sideLi.forEach((li) => {
                 li.classList.remove("active");
             });
-            if (e.offsetTop - 50 <= document.documentElement.scrollTop) {
+            if (e.offsetTop - 100 <= document.documentElement.scrollTop) {
                 index = i;
             }
         });
@@ -66,15 +82,6 @@ window.addEventListener("scroll", (e) => {
         });
         sideLi[index].classList.add("active");
     }
-
-    sideLi.forEach((li) => {
-        li.addEventListener("click", () => {
-            sideLi.forEach((l) => {
-                l.classList.remove("active");
-            });
-            li.classList.add("active");
-        });
-    });
 });
 
 let sm = document.querySelectorAll(".gi span");
