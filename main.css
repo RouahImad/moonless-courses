@@ -152,6 +152,7 @@ ul {
     & .intro {
         position: relative;
         background-image: url("img/moonless.jpg");
+        background-attachment: fixed;
         background-size: cover;
         height: 500px;
         min-height: 100px;
@@ -200,6 +201,20 @@ ul {
 .content .wrapper > div > h3 {
     font-size: 22px;
     margin: 15px 0 20px 0px;
+}
+.posIn {
+    transition: width 50ms ;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    height: 3px;
+    background-color: var(--highlight-color);
+    background: linear-gradient(
+        90deg,
+        rgba(136, 171, 142, 1) 0%,
+        rgba(0, 212, 255, 1) 50%,
+        rgba(175, 200, 173, 1) 90%
+    );
 }
 .intro > * {
     z-index: 12;
