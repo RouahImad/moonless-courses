@@ -229,7 +229,7 @@ ul {
 }
 .gi > ul .mod {
     text-transform: capitalize;
-    transition: var(--main-transition);
+    transition: 0.4s;
     margin-left: 25px;
     margin-bottom: 5px;
     cursor: pointer;
@@ -240,7 +240,7 @@ ul {
     overflow: hidden;
 }
 .gi ul li.ac {
-    max-height: 100px;
+    max-height: 500px;
     padding: 5px 10px;
 }
 .gi ul .mod a {
@@ -276,7 +276,7 @@ ul {
 .gi ul .mod .sub {
     font-size: 13px;
     text-transform: capitalize;
-    transition: var(--main-transition);
+    transition: 0.6s;
     margin-left: 20px;
     cursor: pointer;
     position: relative;
@@ -286,7 +286,7 @@ ul {
 }
 
 .gi ul .mod:hover .sub {
-    max-height: 100px;
+    max-height: 500px;
 }
 .gi ul .mod .sub li {
     color: white;
