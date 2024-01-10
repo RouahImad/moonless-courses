@@ -59,7 +59,7 @@ window.addEventListener("scroll", () => {
     }
 
     let index;
-    if (scrollTop >= siLi[0].offsetTop - 40) {
+    if (scrollTop >= siLi[0].offsetTop - 80) {
         siLi.forEach((e, i) => {
             sideLi.forEach((li) => {
                 li.classList.remove("active");
@@ -87,7 +87,9 @@ window.addEventListener("scroll", () => {
 let sm = document.querySelectorAll(".gi span");
 sm.forEach((s) => {
     s.addEventListener("click", () => {
-        let s1L = document.querySelectorAll(`.gi .${s.textContent} li`);
+        let s1L = document.querySelectorAll(
+            `#${s.parentElement.parentElement.parentElement.id} .gi .${s.textContent} li`
+        );
         let i = s.firstElementChild;
         i.classList.toggle("fa-arrow-up-wide-short");
         i.classList.toggle("fa-arrow-down-short-wide");

@@ -74,12 +74,12 @@ ul {
         min-width: 35px;
         width: 10%;
         padding-bottom: 20px;
-        & .mon {
-            display: none;
-        }
-        & span {
-            display: none;
-        }
+    }
+    .sidebar .mon {
+        display: none;
+    }
+    .sidebar span {
+        display: none;
     }
 }
 .sidebar ul {
@@ -87,12 +87,12 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    & .mon {
-        margin-top: 0px;
-        margin-bottom: 10px;
-        font-size: 25px;
-        font-family: "Aref Ruqaa Ink";
-    }
+}
+.sidebar ul .mon {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 25px;
+    font-family: "Aref Ruqaa Ink";
 }
 .sidebar ul li {
     width: 93%;
@@ -135,72 +135,77 @@ ul {
     overflow: hidden;
     margin-left: 17%;
     flex: 1;
-    & .go img {
-        cursor: pointer;
-        width: 50px;
-        height: auto;
-        display: block;
-        position: fixed;
-        right: 10px;
-        bottom: 10px;
-        z-index: 999;
-        transition: var(--main-transition);
-        transition: bottom 0.9s;
-        opacity: 0;
-    }
-    & .intro {
-        position: relative;
-        background-image: url("img/moonless.jpg");
-        background-attachment: fixed;
-        background-size: cover;
-        height: 500px;
-        min-height: 100px;
-        background-repeat: no-repeat;
-        color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin-bottom: 20px;
-        & h1 {
-            margin-left: 25px;
-            & span {
-                color: var(--highlight-color);
-            }
-        }
-        & p {
-            font-size: 14px;
-            margin-left: 15px;
-            line-height: 1.6;
-            text-transform: capitalize;
-        }
-    }
-    & .wrapper {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(650px, 1fr));
-        gap: 20px;
-        margin-left: 20px;
-        margin-right: 20px;
-        margin-bottom: 20px;
-        & > div {
-            border-radius: 10px;
-            background-color: white;
-            padding: 15px;
-        }
-    }
+}
+.content .header {
+    height: 50px;
+    background-color: var(--second-color);
+}
+.content .go img {
+    cursor: pointer;
+    width: 50px;
+    height: auto;
+    display: block;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 999;
+    transition: var(--main-transition);
+    transition: bottom 0.9s;
+    opacity: 0;
+}
+.content .intro {
+    position: relative;
+    background-image: url("img/moonless.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    height: 500px;
+    min-height: 100px;
+    background-repeat: no-repeat;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.content .intro h1 {
+    margin-left: 25px;
+}
+.content .intro h1 span {
+    color: var(--highlight-color);
+}
+.content .intro p {
+    font-size: 14px;
+    margin-left: 15px;
+    line-height: 1.6;
+    text-transform: capitalize;
+}
+.content .wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(650px, 1fr));
+    gap: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.content .wrapper > div {
+    border-radius: 10px;
+    background-color: white;
+    padding: 15px;
 }
 @media (max-width: 767px) {
     .content {
         margin-left: 10%;
-        & .wrapper {
-            margin-left: 15px;
-            margin-right: 15px;
-            grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
-        }
+    }
+    .content .wrapper {
+        margin-left: 15px;
+        margin-right: 15px;
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
     }
 }
 .content .wrapper > div > h3 {
     font-size: 22px;
     margin: 15px 0 20px 0px;
+    text-transform: capitalize;
 }
 .posIn {
     transition: width 50ms;
@@ -315,8 +320,8 @@ ul {
     position: absolute;
     left: 4px;
     top: 50%;
-    width: 5px;
-    height: 5px;
+    width: 3px;
+    height: 3px;
     background-color: white;
     transform: translate(-50%, -50%);
 }
@@ -327,18 +332,19 @@ ul {
     background-color: transparent;
 }
 /* end courses */
+/* about */
 #divAbout {
     position: relative;
-    & .mug {
-        font-family: "Aref Ruqaa Ink";
-        position: absolute;
-        right: 10px;
-        top: 15px;
-        font-weight: bold;
-        font-size: 30px;
-        color: #33333333;
-        transition: var(--main-transition);
-    }
+}
+#divAbout .mug {
+    font-family: "Aref Ruqaa Ink";
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    font-weight: bold;
+    font-size: 30px;
+    color: #33333333;
+    transition: var(--main-transition);
 }
 #divAbout .mug:hover {
     color: var(--highlight-color);
@@ -347,56 +353,55 @@ ul {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    & .details {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        & .name {
-            font-weight: bold;
-        }
-        & .story {
-            line-height: 1.5;
-            font-size: 15px;
-            text-transform: capitalize;
-            color: #333;
-            margin-left: 10px;
-        }
-        & .socials {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            & a {
-                gap: 10px;
-                display: flex;
-                align-items: center;
-                color: var(--highlight-color);
-                transition: var(--main-transition);
-            }
-            & a:hover {
-                color: #333;
-                transform: scale(1.1);
-            }
-        }
-    }
-    & img {
-        width: 180px;
-        height: auto;
-        border-radius: 50%;
-        box-shadow: 0px 0px 4px 1px #333;
-        transition: var(--main-transition);
-        animation: glow 3s infinite;
-        margin-right: 35px;
-    }
 }
-
+#divAbout .infos img {
+    width: 180px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0px 0px 4px 1px #333;
+    transition: var(--main-transition);
+    animation: glow 3s infinite;
+    margin-right: 35px;
+}
+#divAbout .infos .details {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+#divAbout .infos .details .name {
+    font-weight: bold;
+}
+#divAbout .infos .details .story {
+    line-height: 1.5;
+    font-size: 15px;
+    text-transform: capitalize;
+    color: #333;
+    margin-left: 10px;
+}
+#divAbout .infos .details .socials {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+#divAbout .details .socials a {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    color: var(--highlight-color);
+    transition: var(--main-transition);
+}
+#divAbout .infos .details .socials a:hover {
+    color: #333;
+    transform: scale(1.1);
+}
 @media (max-width: 767px) {
     #divAbout .infos {
         flex-direction: column;
-        & img {
-            margin-right: 0;
-            margin-bottom: 35px;
-        }
+    }
+    #divAbout .infos img {
+        margin-right: 0;
+        margin-bottom: 35px;
     }
 }
 @keyframes glow {
@@ -417,3 +422,4 @@ ul {
         box-shadow: 0px 0px 4px 1px #b50302;
     }
 }
+/* ent about */
