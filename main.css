@@ -7,6 +7,7 @@
     --second-color: #eee7da;
     --button-color: #afc8ad;
     --highlight-color: #88ab8e;
+    --dark-color: #333;
     --main-transition: 0.3s;
 
     /* Dark mode colors */
@@ -103,12 +104,12 @@ ul {
     padding: 6px;
     display: block;
     width: 100%;
-    color: #333;
+    color: var(--dark-color);
 }
 .sidebar h3,
 .sidebar h3 a {
     transition: var(--main-transition);
-    color: #333;
+    color: var(--dark-color);
 }
 .sidebar h3:hover,
 .sidebar h3 a:hover {
@@ -226,7 +227,7 @@ ul {
     text-transform: uppercase;
     cursor: pointer;
 }
-.gi ul li {
+.gi > ul .mod {
     text-transform: capitalize;
     transition: var(--main-transition);
     margin-left: 25px;
@@ -242,10 +243,10 @@ ul {
     max-height: 100px;
     padding: 5px 10px;
 }
-.gi ul li a {
+.gi ul .mod a {
     color: black;
 }
-.gi ul li::after {
+.gi ul .mod::after {
     content: "";
     transition: var(--main-transition);
     position: absolute;
@@ -257,7 +258,7 @@ ul {
     background-color: black;
     transform: translate(-50%, -50%);
 }
-.gi ul li:hover {
+.gi ul .mod:hover {
     margin-left: 37px;
     font-weight: bold;
     transform: scale(1.01);
@@ -266,10 +267,48 @@ ul {
     border-radius: 6px;
     color: white;
 }
-.gi ul li:hover a {
+.gi ul .mod:hover a {
     color: white;
 }
-.gi ul li:hover::after {
-    background-color: var(--highlight-color);
+.gi ul .mod:hover::after {
+    background-color: transparent;
+}
+.gi ul .mod .sub {
+    font-size: 13px;
+    text-transform: capitalize;
+    transition: var(--main-transition);
+    margin-left: 20px;
+    cursor: pointer;
+    position: relative;
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.gi ul .mod:hover .sub {
+    max-height: 100px;
+}
+.gi ul .mod .sub li {
+    color: white;
+    font-weight: bold;
+    position: relative;
+    transition: var(--main-transition);
+}
+.gi ul .mod .sub li::after {
+    content: "";
+    transition: var(--main-transition);
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    width: 5px;
+    height: 5px;
+    background-color: white;
+    transform: translate(-50%, -50%);
+}
+.gi ul .mod .sub li:hover {
+    margin-left: 5px;
+}
+.gi ul .mod .sub li:hover::after {
+    background-color: transparent;
 }
 /* end courses */
