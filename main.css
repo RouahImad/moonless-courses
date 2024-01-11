@@ -559,6 +559,6 @@ ul {
         width: 0;
     }
     100% {
-        width: 35px;
+        width: 100%;
     }
 }
