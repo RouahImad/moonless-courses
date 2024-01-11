@@ -129,16 +129,15 @@ navigator.getBattery().then((battery) => {
 
     function updateCharging() {
         if (battery.charging) {
-            charge.classList.add("active-charging ");
+            charge.classList.add("active-charging");
         } else {
-            charge.classList.remove("active-charging ");
+            charge.classList.remove("active-charging");
         }
     }
     function updateLeveling() {
         let batteryLevel = `${parseInt(battery.level * 100)}%`;
         charge.style.width = batteryLevel;
         chargeLevel.textContent = batteryLevel;
-        console.log(batteryLevel);
         if (parseInt(battery.level * 100) >= 70) {
             document.documentElement.style.setProperty(
                 "--charge-color",
