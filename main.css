@@ -21,7 +21,9 @@ body {
     font-family: "Open Sans", sans-serif;
     margin: 0;
 }
-
+body.login {
+    height: 100vh;
+}
 * {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -137,6 +139,8 @@ ul {
     flex: 1;
 }
 .content .header {
+    display: flex;
+    align-items: center;
     height: 50px;
     background-color: var(--second-color);
 }
@@ -187,7 +191,7 @@ ul {
     margin-right: 20px;
     margin-bottom: 20px;
 }
-.content .wrapper > div {
+.wrapper > div {
     border-radius: 10px;
     background-color: white;
     padding: 15px;
@@ -203,7 +207,7 @@ ul {
         grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
     }
 }
-.content .wrapper > div > h3 {
+.wrapper > div > h3 {
     font-size: 22px;
     margin: 15px 0 20px 0px;
     text-transform: capitalize;
@@ -234,13 +238,13 @@ ul {
     background-color: black;
     opacity: 0.6;
 }
-.content .wrapper > div > div > h3 {
+.wrapper > div > div > h3 {
     text-align: center;
     font-size: 17px;
     color: var(--grey-color-dark);
     position: relative;
 }
-.content .wrapper > div > div > h3 ::after {
+.wrapper > div > div > h3 ::after {
 }
 /* end content */
 /* courses */
@@ -445,13 +449,39 @@ ul {
     }
 }
 /* ent about */
+/* log in */
+.login .page {
+    justify-content: center;
+    align-items: center;
+    transition: var(--main-transition);
+    animation: 3s change infinite;
+}
+@keyframes change {
+    0%,
+    100% {
+        background-color: var(--second-color);
+    }
+    50% {
+        background-color: var(--button-color);
+    }
+}
+#log {
+    margin: 20px;
+}
 .gallery {
+    transition: var(--main-transition);
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(12, 5vw);
+    grid-template-rows: repeat(12, 1.6vw);
     grid-gap: 15px;
 }
+@media (max-width: 767px) {
+    .gallery {
+        grid-template-rows: repeat(12, 2.6vw);
+    }
+}
 .gallery img {
+    border-radius: 6px;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -479,4 +509,56 @@ ul {
     grid-column-end: 5;
     grid-row-start: 5;
     grid-row-end: 13;
+}
+/* end log in */
+.header .container {
+    margin-left: 10px;
+}
+#battery {
+    box-sizing: content-box;
+    margin: auto;
+    position: relative;
+    height: 17px;
+    width: 40px;
+    border-radius: 2px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #333;
+}
+#battery::before {
+    content: "";
+    position: absolute;
+    height: 6px;
+    width: 3px;
+    margin: auto;
+    right: -6px;
+    border-radius: 0 2px 2px 0;
+    background-color: var(--charge-color);
+    border: 1px solid #333;
+}
+#charge {
+    background-color: var(--charge-color);
+    position: absolute;
+    height: 17px;
+    width: 35px;
+    top: 0;
+    left: 0;
+}
+#charge-level {
+    position: absolute;
+    font-weight: 500;
+    font-size: 10px;
+    color: #333;
+}
+
+.active {
+    animation: charge-an 3s infinite linear;
+}
+@keyframes charge-an {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 20px;
+    }
 }

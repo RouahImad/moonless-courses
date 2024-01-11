@@ -1,4 +1,3 @@
-let side = document.querySelector(".sidebar");
 let sideLi = document.querySelectorAll(".sidebar ul li a");
 let go = document.querySelector(".content img");
 let posin = document.querySelector(".page .posIn");
@@ -78,7 +77,7 @@ window.addEventListener("scroll", () => {
             index = i;
             li.classList.remove("active");
         });
-        sideLi[index].classList.add("active");
+        sideLi[index - 1].classList.add("active");
     }
     if (sideLi[sideLi.length - 2].classList.contains("active")) {
         mug.classList.add("mugetsu");
@@ -105,3 +104,56 @@ sm.forEach((s) => {
 //     if (e.classList.contains("s1")) {
 //     }
 // });
+
+const chargeLevel = document.getElementById("charge-level");
+const charge = document.getElementById("charge");
+window.onload = () => {
+    if (!navigator.getBattery) {
+        console.log("battery status api is not supported");
+        return false;
+    }
+};
+
+navigator.getBattery().then((battery) => {
+    function update() {
+        updateCharging();
+        updateLeveling();
+    }
+    update();
+    battery.addEventListener("chargingchange", () => {
+        update();
+    });
+    battery.addEventListener("levelchange", () => {
+        update();
+    });
+
+    function updateCharging() {
+        if (battery.charging) {
+            charge.classList.add("active");
+        } else {
+            charge.classList.remove("active");
+        }
+    }
+    function updateLeveling() {
+        let batteryLevel = `${parseInt(battery.level * 100)}%`;
+        charge.style.width = batteryLevel;
+        chargeLevel.textContent = batteryLevel;
+        console.log(batteryLevel);
+        if (parseInt(battery.level * 100) >= 70) {
+            document.documentElement.style.setProperty(
+                "--charge-color",
+                "#00FF00"
+            );
+        } else if (parseInt(battery.level * 100) >= 30) {
+            document.documentElement.style.setProperty(
+                "--charge-color",
+                "#FFA500"
+            );
+        } else {
+            document.documentElement.style.setProperty(
+                "--charge-color",
+                "#FF0000"
+            );
+        }
+    }
+});
