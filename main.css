@@ -209,11 +209,10 @@ ul {
     text-transform: capitalize;
 }
 .posIn {
-    margin-left: -2px;
     border-bottom: 1px solid #333;
     position: fixed;
     top: 0;
-    z-index: 9;
+    z-index: 999;
     height: 4px;
     background-color: var(--highlight-color);
     background: linear-gradient(

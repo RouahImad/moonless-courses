@@ -1,7 +1,7 @@
 let side = document.querySelector(".sidebar");
 let sideLi = document.querySelectorAll(".sidebar ul li a");
 let go = document.querySelector(".content img");
-let posin = document.querySelector(".content .posIn");
+let posin = document.querySelector(".page .posIn");
 let siLi = document.querySelectorAll(".content .wrapper > div");
 let mug = document.querySelector("#about .mug");
 let mon = document.querySelector(".mon");
@@ -73,7 +73,7 @@ window.addEventListener("scroll", () => {
             li.classList.remove("active");
         });
     }
-    if (scrollHeight - scrollTop - 10 <= clientHeight) {
+    if (scrollHeight <= (scrollTop + clientHeight).toFixed()) {
         sideLi.forEach((li, i) => {
             index = i;
             li.classList.remove("active");
