@@ -351,7 +351,7 @@ ul {
     color: #33333333;
     transition: var(--main-transition);
 }
-#about .mug.etsu {
+#about .mugetsu {
     color: var(--highlight-color);
 }
 #about .infos {

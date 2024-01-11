@@ -1,5 +1,11 @@
 let side = document.querySelector(".sidebar");
 let sideLi = document.querySelectorAll(".sidebar ul li a");
+let go = document.querySelector(".content img");
+let posin = document.querySelector(".content .posIn");
+let siLi = document.querySelectorAll(".content .wrapper > div");
+let mug = document.querySelector("#about .mug");
+let mon = document.querySelector(".mon");
+let sm = document.querySelectorAll(".gi span");
 
 sideLi.forEach((li) => {
     li.addEventListener("click", () => {
@@ -20,14 +26,11 @@ sideLi.forEach((l) => {
         });
     }
 });
-let mon = document.querySelector(".mon");
 mon.addEventListener("click", () => {
     sideLi.forEach((li) => {
         li.classList.remove("active");
     });
 });
-
-let go = document.querySelector(".content img");
 
 go.addEventListener("click", (e) => {
     window.scrollTo(0, 0);
@@ -39,8 +42,6 @@ go.addEventListener("click", (e) => {
         go.style.setProperty("bottom", "40px");
     }, 1000);
 });
-let posin = document.querySelector(".content .posIn");
-let siLi = document.querySelectorAll(".content .wrapper > div");
 
 window.addEventListener("scroll", () => {
     sideLi.forEach((l) => {
@@ -50,14 +51,12 @@ window.addEventListener("scroll", () => {
     let { scrollHeight, scrollTop, clientHeight } = document.documentElement;
     const scrolled = (scrollTop / (scrollHeight - clientHeight)) * 100;
     posin.style.width = `${scrolled}%`;
-
     if (window.scrollY < 350) {
         go.style.opacity = 0;
         go.classList.remove("clicked");
     } else {
         go.style.opacity = 1;
     }
-
     let index;
     if (scrollTop >= siLi[0].offsetTop - 80) {
         siLi.forEach((e, i) => {
@@ -74,7 +73,6 @@ window.addEventListener("scroll", () => {
             li.classList.remove("active");
         });
     }
-
     if (scrollHeight - scrollTop - 10 <= clientHeight) {
         sideLi.forEach((li, i) => {
             index = i;
@@ -83,13 +81,12 @@ window.addEventListener("scroll", () => {
         sideLi[index].classList.add("active");
     }
     if (sideLi[sideLi.length - 2].classList.contains("active")) {
-        document.querySelector("#about .mug").classList.add("etsu");
+        mug.classList.add("mugetsu");
     } else {
-        document.querySelector("#about .mug").classList.remove("etsu");
+        mug.classList.remove("mugetsu");
     }
 });
 
-let sm = document.querySelectorAll(".gi span");
 sm.forEach((s) => {
     s.addEventListener("click", () => {
         let s1L = document.querySelectorAll(
