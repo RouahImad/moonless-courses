@@ -208,11 +208,12 @@ ul {
     text-transform: capitalize;
 }
 .posIn {
-    transition: width 50ms;
+    margin-left: -2px;
+    border: 1px solid #333;
     position: fixed;
     top: 0;
-    z-index: 99;
-    height: 3px;
+    z-index: 9;
+    height: 4px;
     background-color: var(--highlight-color);
     background: linear-gradient(
         90deg,
@@ -379,10 +380,14 @@ ul {
     margin-left: 10px;
 }
 #divAbout .infos .details .socials {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
     width: 100%;
+    margin-left: 10px;
+}
+#divAbout .infos .details .socials span {
+    width: fit-content;
 }
 #divAbout .details .socials a {
     gap: 10px;
@@ -390,10 +395,24 @@ ul {
     align-items: center;
     color: var(--highlight-color);
     transition: var(--main-transition);
+    font-weight: bold;
+}
+#divAbout .infos .details .socials a i {
+    font-size: 20px;
 }
 #divAbout .infos .details .socials a:hover {
     color: #333;
     transform: scale(1.1);
+}
+@media (min-width: 637px) and (max-width: 767px) {
+    #divAbout .infos .details .socials {
+        place-items: center;
+    }
+}
+@media (min-width: 960px) {
+    #divAbout .infos .details .socials {
+        place-items: center;
+    }
 }
 @media (max-width: 767px) {
     #divAbout .infos {
