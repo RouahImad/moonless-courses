@@ -209,7 +209,7 @@ ul {
 }
 .posIn {
     margin-left: -2px;
-    border: 1px solid #333;
+    border-bottom: 1px solid #333;
     position: fixed;
     top: 0;
     z-index: 9;
