@@ -82,6 +82,11 @@ window.addEventListener("scroll", () => {
         });
         sideLi[index].classList.add("active");
     }
+    if (sideLi[sideLi.length - 2].classList.contains("active")) {
+        document.querySelector("#about .mug").classList.add("etsu");
+    } else {
+        document.querySelector("#about .mug").classList.remove("etsu");
+    }
 });
 
 let sm = document.querySelectorAll(".gi span");

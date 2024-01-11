@@ -191,6 +191,7 @@ ul {
     border-radius: 10px;
     background-color: white;
     padding: 15px;
+    filter: drop-shadow(0px 0px 10px #3333);
 }
 @media (max-width: 767px) {
     .content {
@@ -234,13 +235,16 @@ ul {
     background-color: black;
     opacity: 0.6;
 }
-/* end content */
-/* courses */
 .content .wrapper > div > div > h3 {
     text-align: center;
     font-size: 17px;
     color: var(--grey-color-dark);
+    position: relative;
 }
+.content .wrapper > div > div > h3 ::after {
+}
+/* end content */
+/* courses */
 .gi ul > span {
     display: block;
     color: var(--highlight-color);
@@ -334,10 +338,10 @@ ul {
 }
 /* end courses */
 /* about */
-#divAbout {
+#about {
     position: relative;
 }
-#divAbout .mug {
+#about .mug {
     font-family: "Aref Ruqaa Ink";
     position: absolute;
     right: 10px;
@@ -347,15 +351,15 @@ ul {
     color: #33333333;
     transition: var(--main-transition);
 }
-#divAbout .mug:hover {
+#about .mug.etsu {
     color: var(--highlight-color);
 }
-#divAbout .infos {
+#about .infos {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
 }
-#divAbout .infos img {
+#about .infos img {
     width: 180px;
     height: auto;
     border-radius: 50%;
@@ -364,32 +368,32 @@ ul {
     animation: glow 3s infinite;
     margin-right: 35px;
 }
-#divAbout .infos .details {
+#about .infos .details {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
 }
-#divAbout .infos .details .name {
+#about .infos .details .name {
     font-weight: bold;
 }
-#divAbout .infos .details .story {
+#about .infos .details .story {
     line-height: 1.5;
     font-size: 15px;
     text-transform: capitalize;
     color: #333;
     margin-left: 10px;
 }
-#divAbout .infos .details .socials {
+#about .infos .details .socials {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 20px;
     width: 100%;
     margin-left: 10px;
 }
-#divAbout .infos .details .socials span {
+#about .infos .details .socials span {
     width: fit-content;
 }
-#divAbout .details .socials a {
+#about .details .socials a {
     gap: 10px;
     display: flex;
     align-items: center;
@@ -397,28 +401,28 @@ ul {
     transition: var(--main-transition);
     font-weight: bold;
 }
-#divAbout .infos .details .socials a i {
+#about .infos .details .socials a i {
     font-size: 20px;
 }
-#divAbout .infos .details .socials a:hover {
+#about .infos .details .socials a:hover {
     color: #333;
     transform: scale(1.1);
 }
 @media (min-width: 637px) and (max-width: 767px) {
-    #divAbout .infos .details .socials {
+    #about .infos .details .socials {
         place-items: center;
     }
 }
 @media (min-width: 960px) {
-    #divAbout .infos .details .socials {
+    #about .infos .details .socials {
         place-items: center;
     }
 }
 @media (max-width: 767px) {
-    #divAbout .infos {
+    #about .infos {
         flex-direction: column;
     }
-    #divAbout .infos img {
+    #about .infos img {
         margin-right: 0;
         margin-bottom: 35px;
     }
@@ -445,7 +449,7 @@ ul {
 .gallery {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(11, 5vw);
+    grid-template-rows: repeat(12, 5vw);
     grid-gap: 15px;
 }
 .gallery img {
@@ -463,17 +467,17 @@ ul {
     grid-column-start: 5;
     grid-column-end: 9;
     grid-row-start: 5;
-    grid-row-end: 8;
+    grid-row-end: 9;
 }
 .gallery img:nth-of-type(3) {
     grid-column-start: 5;
     grid-column-end: 9;
-    grid-row-start: 8;
-    grid-row-end: 12;
+    grid-row-start: 9;
+    grid-row-end: 13;
 }
 .gallery img:nth-of-type(4) {
     grid-column-start: 1;
     grid-column-end: 5;
     grid-row-start: 5;
-    grid-row-end: 12;
+    grid-row-end: 13;
 }
