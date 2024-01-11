@@ -551,7 +551,7 @@ ul {
     color: #333;
 }
 
-.active {
+.active-charging {
     animation: charge-an 3s infinite linear;
 }
 @keyframes charge-an {

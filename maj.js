@@ -129,9 +129,9 @@ navigator.getBattery().then((battery) => {
 
     function updateCharging() {
         if (battery.charging) {
-            charge.classList.add("active");
+            charge.classList.add("active-charging ");
         } else {
-            charge.classList.remove("active");
+            charge.classList.remove("active-charging ");
         }
     }
     function updateLeveling() {
