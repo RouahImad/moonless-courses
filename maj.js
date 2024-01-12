@@ -1,3 +1,6 @@
+let search = document.querySelector(".intro .search .box input");
+let options = document.querySelectorAll(".intro .search .options input");
+let searchIcon = document.querySelector(".intro .search .box i");
 let sideLi = document.querySelectorAll(".sidebar ul li a");
 let go = document.querySelector(".content img");
 let posin = document.querySelector(".page .posIn");
@@ -100,11 +103,6 @@ sm.forEach((s) => {
     });
 });
 
-// document.querySelectorAll("body *").forEach((e) => {
-//     if (e.classList.contains("s1")) {
-//     }
-// });
-
 const chargeLevel = document.getElementById("charge-level");
 const charge = document.getElementById("charge");
 window.onload = () => {
@@ -156,3 +154,62 @@ navigator.getBattery().then((battery) => {
         }
     }
 });
+
+search.onfocus = () => {
+    search.style.width = "17rem";
+};
+let reg = new RegExp(`^[-=!@#$%^&*().,/0-9]+$`);
+search.addEventListener("keydown", (e) => {
+    if (e.key == "Enter" && search.value.length >= 3) {
+        validate(
+            search.value
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .toLowerCase()
+        );
+    }
+    if (reg.test(e.key)) {
+        e.preventDefault();
+    }
+});
+function handleSearch() {
+    if (search.value !== "" && search.value.length >= 3) {
+        validate(
+            search.value
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .toLowerCase()
+        );
+    }
+}
+
+search.onblur = handleSearch;
+searchIcon.onclick = handleSearch;
+
+function validate(v) {
+    document.querySelectorAll(`body *`).forEach((e) => {
+        e.classList.remove("found");
+    });
+    let searchId;
+    options.forEach((op) => {
+        if (op.checked) {
+            searchId = op.id;
+        }
+    });
+
+    document.querySelectorAll(`body #${searchId} *`).forEach((e) => {
+        if (e.hasAttribute("data-search")) {
+            if (e.getAttribute("data-search").includes(v)) {
+                if (!e.classList.contains("ac")) {
+                    e.parentElement.firstElementChild.click();
+                }
+                e.scrollIntoView({ behavior: "smooth", block: "start" });
+                e.classList.add("found");
+            }
+        }
+    });
+}
+// document.querySelectorAll("body *").forEach((e) => {
+//     if (e.classList.contains("s1")) {
+//     }
+// });

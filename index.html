@@ -78,6 +78,7 @@
                             <div id="charge"></div>
                             <div id="charge-level"></div>
                         </div>
+                        <div class="theme">dark</div>
                     </div>
                 </div>
                 <div class="go">
@@ -94,6 +95,39 @@
                         terms of knowledge. Start your educational path right
                         now!
                     </p>
+                    <div class="search">
+                        <div class="box">
+                            <input type="text" placeholder="Search" min="3" />
+                            <i class="fa-brands fa-searchengin"></i>
+                        </div>
+                        <div class="options">
+                            <div class="cr">
+                                <input
+                                    checked
+                                    type="radio"
+                                    name="searching"
+                                    id="courses"
+                                />
+                                <label for="courses">courses</label>
+                            </div>
+                            <div class="ex">
+                                <input
+                                    type="radio"
+                                    name="searching"
+                                    id="exercises"
+                                />
+                                <label for="exercises">exercises</label>
+                            </div>
+                            <div class="tut">
+                                <input
+                                    type="radio"
+                                    name="searching"
+                                    id="tutorials"
+                                />
+                                <label for="tutorials">tutorials</label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="wrapper">
                     <div id="courses">
@@ -107,7 +141,7 @@
                                         class="fa-solid fa-arrow-down-short-wide"
                                     ></i
                                 ></span>
-                                <li class="mod">
+                                <li class="mod" data-search="algebre">
                                     algebre
                                     <ul class="sub">
                                         <li>
@@ -131,14 +165,14 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="analyse">
                                     <a
                                         href="https://drive.google.com/file/d/1EjjjOSIQDS5-FWezoUG-KHxaafrKVLRS/view"
                                         target="_blank"
                                         >analyse</a
                                     >
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="language c">
                                     programmation c
                                     <ul class="sub">
                                         <li>
@@ -185,15 +219,18 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="algorithme">
                                     <a
                                         href="https://drive.google.com/file/d/17vaplq5OSFWZwNuyrhs_qQT6NnK4Bjr0/view"
                                         target="_blank"
                                         >algorithme</a
                                     >
                                 </li>
-                                <li class="mod">
-                                    systeme exploitation
+                                <li
+                                    class="mod"
+                                    data-search="systeme exploitation"
+                                >
+                                    Système d'exploitation
                                     <ul class="sub">
                                         <li>
                                             <a
@@ -232,7 +269,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="circuit logique">
                                     circuit logique
                                     <ul class="sub">
                                         <li>
@@ -258,21 +295,24 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="architecture ordinateurs"
+                                >
                                     <a
                                         href="https://drive.google.com/file/d/1-PxWQjNlfvkVoQ6KlDbbTpWI4Xg7xGI5/view"
                                         target="_blank"
                                         >architecture des ordinateurs</a
                                     >
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="english">
                                     <a
                                         href="https://drive.google.com/file/d/18ceRtfj91BKhZQid_sb_B3YQGVBlKL6H/view"
                                         target="_blank"
                                         >english</a
                                     >
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="tec">
                                     TEC
                                     <ul class="sub">
                                         <li>
@@ -305,7 +345,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="msi">
                                     MSI
                                     <ul class="sub">
                                         <li>
@@ -346,7 +386,10 @@
                                         class="fa-solid fa-arrow-down-short-wide"
                                     ></i
                                 ></span>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="Probabilites statistiques"
+                                >
                                     Probabilités et statistiques
                                     <ul class="sub">
                                         <li>
@@ -354,7 +397,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="Méthodes Numériques"
+                                >
                                     Méthodes Numériques
                                     <ul class="sub">
                                         <li>
@@ -362,7 +408,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="structures donnees"
+                                >
                                     structures de données
                                     <ul class="sub">
                                         <li>
@@ -370,7 +419,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="objet cpp c++">
                                     Programmation Objet
                                     <ul class="sub">
                                         <li>
@@ -378,7 +427,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="web html js css php"
+                                >
                                     Programmation Web
                                     <ul class="sub">
                                         <li>
@@ -386,7 +438,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="sql mysql">
                                     Bases de données
                                     <ul class="sub">
                                         <li>
@@ -402,7 +454,7 @@
                                         class="fa-solid fa-arrow-down-short-wide"
                                     ></i
                                 ></span>
-                                <li class="mod">
+                                <li class="mod" data-search="c#">
                                     Programmation C#
                                     <ul class="sub">
                                         <li>
@@ -410,7 +462,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="projet gestion">
                                     Gestion de projets
                                     <ul class="sub">
                                         <li>
@@ -418,7 +470,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="Commutation routage"
+                                >
                                     Commutation et routage
                                     <ul class="sub">
                                         <li>
@@ -426,7 +481,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="Logiciel">
                                     Atelier Génie Logiciel C#
                                     <ul class="sub">
                                         <li>
@@ -434,7 +489,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="Conception Orientee"
+                                >
                                     Analyse et Conception Orientée Objet
                                     <ul class="sub">
                                         <li>
@@ -442,7 +500,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="reseaux normalisation"
+                                >
                                     Architectures et Normalisation des Réseaux
                                     <ul class="sub">
                                         <li>
@@ -450,7 +511,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="java">
                                     Programmation Java
                                     <ul class="sub">
                                         <li>
@@ -458,7 +519,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="entreprises Organisation"
+                                >
                                     Organisation des entreprises
                                     <ul class="sub">
                                         <li>
@@ -466,7 +530,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="Entrepreneuriat">
                                     Entrepreneuriat
                                     <ul class="sub">
                                         <li>
@@ -482,7 +546,7 @@
                                         class="fa-solid fa-arrow-down-short-wide"
                                     ></i
                                 ></span>
-                                <li class="mod">
+                                <li class="mod" data-search="Administration">
                                     Administration des Bases de Données
                                     <ul class="sub">
                                         <li>
@@ -490,7 +554,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="oracle">
                                     Administration Oracle
                                     <ul class="sub">
                                         <li>
@@ -498,7 +562,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="server">
                                     Administration SQL server
                                     <ul class="sub">
                                         <li>
@@ -506,7 +570,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="services">
                                     Administration des services
                                     <ul class="sub">
                                         <li>
@@ -514,7 +578,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="jee">
                                     Technologie JEE
                                     <ul class="sub">
                                         <li>
@@ -522,7 +586,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="xml">
                                     Technologie XML
                                     <ul class="sub">
                                         <li>
@@ -530,7 +594,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="etl datawarehouse">
                                     ETL et datawarehouse
                                     <ul class="sub">
                                         <li>
@@ -538,7 +602,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="reporting">
                                     Analyse et Reporting
                                     <ul class="sub">
                                         <li>
@@ -546,7 +610,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="securite">
                                     Sécurité des réseaux
                                     <ul class="sub">
                                         <li>
@@ -554,7 +618,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="mobile developpement"
+                                >
                                     Développement Mobile
                                     <ul class="sub">
                                         <li>
@@ -576,7 +643,7 @@
                                         class="fa-solid fa-arrow-down-short-wide"
                                     ></i
                                 ></span>
-                                <li class="mod">
+                                <li class="mod" data-search="algebre">
                                     algebre
                                     <ul class="sub">
                                         <li>
@@ -584,7 +651,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="analyse">
                                     analyse
                                     <ul class="sub">
                                         <li>
@@ -592,7 +659,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="language c">
                                     programmation c
                                     <ul class="sub">
                                         <li>
@@ -600,7 +667,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="algorithme">
                                     algorithme
                                     <ul class="sub">
                                         <li>
@@ -608,7 +675,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="systeme exploitation"
+                                >
                                     systeme exploitation
                                     <ul class="sub">
                                         <li>
@@ -616,7 +686,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="circuit logique">
                                     circuit logique
                                     <ul class="sub">
                                         <li>
@@ -624,7 +694,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="architecture ordinateurs"
+                                >
                                     architecture des ordinateurs
                                     <ul class="sub">
                                         <li>
@@ -632,7 +705,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="english">
                                     english
                                     <ul class="sub">
                                         <li>
@@ -640,7 +713,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="tec">
                                     TEC
                                     <ul class="sub">
                                         <li>
@@ -648,7 +721,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="msi">
                                     MSI
                                     <ul class="sub">
                                         <li>
@@ -664,7 +737,10 @@
                                         class="fa-solid fa-arrow-down-short-wide"
                                     ></i
                                 ></span>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="Probabilites statistiques"
+                                >
                                     Probabilités et statistiques
                                     <ul class="sub">
                                         <li>
@@ -672,7 +748,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="Méthodes Numériques"
+                                >
                                     Méthodes Numériques
                                     <ul class="sub">
                                         <li>
@@ -680,7 +759,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="structures donnees"
+                                >
                                     structures de données
                                     <ul class="sub">
                                         <li>
@@ -688,7 +770,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="objet cpp c++">
                                     Programmation Objet
                                     <ul class="sub">
                                         <li>
@@ -696,7 +778,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="web html js css php"
+                                >
                                     Programmation Web
                                     <ul class="sub">
                                         <li>
@@ -704,7 +789,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="sql mysql">
                                     Bases de données
                                     <ul class="sub">
                                         <li>
@@ -720,7 +805,7 @@
                                         class="fa-solid fa-arrow-down-short-wide"
                                     ></i
                                 ></span>
-                                <li class="mod">
+                                <li class="mod" data-search="c#">
                                     Programmation C#
                                     <ul class="sub">
                                         <li>
@@ -728,7 +813,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="projet gestion">
                                     Gestion de projets
                                     <ul class="sub">
                                         <li>
@@ -736,7 +821,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="Commutation routage"
+                                >
                                     Commutation et routage
                                     <ul class="sub">
                                         <li>
@@ -744,7 +832,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="Logiciel">
                                     Atelier Génie Logiciel C#
                                     <ul class="sub">
                                         <li>
@@ -752,7 +840,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="Conception Orientee"
+                                >
                                     Analyse et Conception Orientée Objet
                                     <ul class="sub">
                                         <li>
@@ -760,7 +851,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="reseaux normalisation"
+                                >
                                     Architectures et Normalisation des Réseaux
                                     <ul class="sub">
                                         <li>
@@ -768,7 +862,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="java">
                                     Programmation Java
                                     <ul class="sub">
                                         <li>
@@ -776,7 +870,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="entreprises Organisation"
+                                >
                                     Organisation des entreprises
                                     <ul class="sub">
                                         <li>
@@ -784,7 +881,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="Entrepreneuriat">
                                     Entrepreneuriat
                                     <ul class="sub">
                                         <li>
@@ -800,7 +897,7 @@
                                         class="fa-solid fa-arrow-down-short-wide"
                                     ></i
                                 ></span>
-                                <li class="mod">
+                                <li class="mod" data-search="Administration">
                                     Administration des Bases de Données
                                     <ul class="sub">
                                         <li>
@@ -808,7 +905,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="oracle">
                                     Administration Oracle
                                     <ul class="sub">
                                         <li>
@@ -816,7 +913,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="server">
                                     Administration SQL server
                                     <ul class="sub">
                                         <li>
@@ -824,7 +921,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="services">
                                     Administration des services
                                     <ul class="sub">
                                         <li>
@@ -832,7 +929,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="jee">
                                     Technologie JEE
                                     <ul class="sub">
                                         <li>
@@ -840,7 +937,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="xml">
                                     Technologie XML
                                     <ul class="sub">
                                         <li>
@@ -848,7 +945,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="etl datawarehouse">
                                     ETL et datawarehouse
                                     <ul class="sub">
                                         <li>
@@ -856,7 +953,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="reporting">
                                     Analyse et Reporting
                                     <ul class="sub">
                                         <li>
@@ -864,7 +961,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="securite">
                                     Sécurité des réseaux
                                     <ul class="sub">
                                         <li>
@@ -872,7 +969,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="mobile developpement"
+                                >
                                     Développement Mobile
                                     <ul class="sub">
                                         <li>
@@ -894,7 +994,7 @@
                                         class="fa-solid fa-arrow-down-short-wide"
                                     ></i
                                 ></span>
-                                <li class="mod">
+                                <li class="mod" data-search="algebre">
                                     algebre
                                     <ul class="sub">
                                         <li>
@@ -902,7 +1002,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="analyse">
                                     Analyse
                                     <ul class="sub">
                                         <li>
@@ -910,21 +1010,24 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="language c">
                                     <a
                                         href="https://youtube.com/playlist?list=PLA1FTfKBAEX4hblYoH6mnq0zsie2w6Wif&si=1ma9YAdNDpDnsEvG"
                                         target="_blank"
                                         >programmation c</a
                                     >
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="algorithme">
                                     <a
                                         href="https://youtube.com/playlist?list=PLZpzLuUp9qXwrApSukhtvpi4U6l-INcTI&si=ah7RrZZtBigayHCp"
                                         target="_blank"
                                         >algorithme</a
                                     >
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="systeme exploitation"
+                                >
                                     systeme exploitation
                                     <ul class="sub">
                                         <li>
@@ -943,7 +1046,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="circuit logique">
                                     circuit logique
                                     <ul class="sub">
                                         <li>
@@ -951,7 +1054,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="architecture ordinateurs"
+                                >
                                     architecture des ordinateurs
                                     <ul class="sub">
                                         <li>
@@ -959,13 +1065,13 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="english">
                                     english
                                     <ul class="sub">
                                         <li>Easy !!!</li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="msi">
                                     <a
                                         href="https://youtube.com/playlist?list=PLJe5vGB_oTirJ2w8Ey9mIptmgtFMnINKw&si=4TGUc7zTKwqF0Wzd"
                                         target="_blank"
@@ -980,7 +1086,10 @@
                                         class="fa-solid fa-arrow-down-short-wide"
                                     ></i
                                 ></span>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="Probabilites statistiques"
+                                >
                                     Probabilités et statistiques
                                     <ul class="sub">
                                         <li>
@@ -988,7 +1097,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="Méthodes Numériques"
+                                >
                                     Méthodes Numériques
                                     <ul class="sub">
                                         <li>
@@ -996,7 +1108,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="structures donnees"
+                                >
                                     structures de données
                                     <ul class="sub">
                                         <li>
@@ -1004,7 +1119,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="objet cpp c++">
                                     Programmation Objet
                                     <ul class="sub">
                                         <li>
@@ -1012,7 +1127,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="web html js css php"
+                                >
                                     Programmation Web
                                     <ul class="sub">
                                         <li>
@@ -1020,7 +1138,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="sql mysql">
                                     Bases de données
                                     <ul class="sub">
                                         <li>
@@ -1036,7 +1154,7 @@
                                         class="fa-solid fa-arrow-down-short-wide"
                                     ></i
                                 ></span>
-                                <li class="mod">
+                                <li class="mod" data-search="c#">
                                     Programmation C#
                                     <ul class="sub">
                                         <li>
@@ -1044,7 +1162,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="projet gestion">
                                     Gestion de projets
                                     <ul class="sub">
                                         <li>
@@ -1052,7 +1170,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="Commutation routage"
+                                >
                                     Commutation et routage
                                     <ul class="sub">
                                         <li>
@@ -1060,7 +1181,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="Logiciel">
                                     Atelier Génie Logiciel C#
                                     <ul class="sub">
                                         <li>
@@ -1068,7 +1189,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="Conception Orientee"
+                                >
                                     Analyse et Conception Orientée Objet
                                     <ul class="sub">
                                         <li>
@@ -1076,7 +1200,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="reseaux normalisation"
+                                >
                                     Architectures et Normalisation des Réseaux
                                     <ul class="sub">
                                         <li>
@@ -1084,7 +1211,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="java">
                                     Programmation Java
                                     <ul class="sub">
                                         <li>
@@ -1092,7 +1219,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="entreprises Organisation"
+                                >
                                     Organisation des entreprises
                                     <ul class="sub">
                                         <li>
@@ -1100,7 +1230,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="Entrepreneuriat">
                                     Entrepreneuriat
                                     <ul class="sub">
                                         <li>
@@ -1116,7 +1246,7 @@
                                         class="fa-solid fa-arrow-down-short-wide"
                                     ></i
                                 ></span>
-                                <li class="mod">
+                                <li class="mod" data-search="Administration">
                                     Administration des Bases de Données
                                     <ul class="sub">
                                         <li>
@@ -1124,7 +1254,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="oracle">
                                     Administration Oracle
                                     <ul class="sub">
                                         <li>
@@ -1132,7 +1262,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="server">
                                     Administration SQL server
                                     <ul class="sub">
                                         <li>
@@ -1140,7 +1270,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="services">
                                     Administration des services
                                     <ul class="sub">
                                         <li>
@@ -1148,7 +1278,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="jee">
                                     Technologie JEE
                                     <ul class="sub">
                                         <li>
@@ -1156,7 +1286,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="xml">
                                     Technologie XML
                                     <ul class="sub">
                                         <li>
@@ -1164,7 +1294,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="etl datawarehouse">
                                     ETL et datawarehouse
                                     <ul class="sub">
                                         <li>
@@ -1172,7 +1302,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="reporting">
                                     Analyse et Reporting
                                     <ul class="sub">
                                         <li>
@@ -1180,7 +1310,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li class="mod" data-search="securite">
                                     Sécurité des réseaux
                                     <ul class="sub">
                                         <li>
@@ -1188,7 +1318,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="mod">
+                                <li
+                                    class="mod"
+                                    data-search="mobile developpement"
+                                >
                                     Développement Mobile
                                     <ul class="sub">
                                         <li>

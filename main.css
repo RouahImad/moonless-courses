@@ -141,7 +141,7 @@ ul {
 .content .header {
     display: flex;
     align-items: center;
-    height: 50px;
+    min-height: 50px;
     background-color: var(--second-color);
 }
 .content .go img {
@@ -505,7 +505,7 @@ ul {
     grid-row-start: 9;
     grid-row-end: 13;
 }
-.gallery img{
+.gallery img {
     grid-column-start: 1;
     grid-column-end: 5;
     grid-row-start: 5;
@@ -513,11 +513,13 @@ ul {
 }
 /* end log in */
 .header .container {
-    margin-left: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
 }
 #battery {
     box-sizing: content-box;
-    margin: auto;
     position: relative;
     height: 17px;
     width: 40px;
@@ -562,4 +564,64 @@ ul {
     100% {
         width: 100%;
     }
+}
+.intro .search {
+    cursor: pointer;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+}
+.intro .search .box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+}
+.intro .search .box input {
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    width: 13rem;
+    transition: var(--main-transition);
+    background-color: var(--highlight-color);
+    color: white;
+    caret-color: var(--second-color);
+}
+.intro .search .box input::placeholder {
+    color: white;
+    transition: var(--main-transition);
+}
+.intro .search .box input:focus::placeholder {
+    opacity: 0;
+}
+.intro .search .box i {
+    position: absolute;
+    right: 10px;
+    font-size: 22px;
+}
+.intro .search .options {
+    font-size: 16px;
+    transition: var(--main-transition);
+    display: flex;
+    gap: 20px;
+}
+.intro .search .options input {
+    accent-color: var(--highlight-color);
+}
+.intro .search .options input,
+.intro .search .options label {
+    transition: var(--main-transition);
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.intro .search .options div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.found {
+    background-color: yellow;
+    border-radius: 6px;
+    width: fit-content;
 }
