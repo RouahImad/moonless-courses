@@ -244,8 +244,6 @@ ul {
     color: var(--grey-color-dark);
     position: relative;
 }
-.wrapper > div > div > h3 ::after {
-}
 /* end content */
 /* courses */
 .gi ul > span {
@@ -621,7 +619,7 @@ ul {
     gap: 5px;
 }
 .found {
-    background-color: yellow;
+    background-color: rgba(255, 255, 0, 0.746);
     border-radius: 6px;
     width: fit-content;
 }
