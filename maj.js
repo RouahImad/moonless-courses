@@ -8,7 +8,16 @@ let siLi = document.querySelectorAll(".content .wrapper > div");
 let mug = document.querySelector("#about .mug");
 let mon = document.querySelector(".mon");
 let sm = document.querySelectorAll(".gi span");
+let reg = new RegExp(`^[-=!@#$%^&*().,/0-9]+$`);
+let notification = document.querySelector(".notification"),
+    not = document.querySelector(".notification-div"),
+    notiHolder = document.querySelector(".notification-content"),
+    closeNoti = document.querySelector(".close");
+let darklight = document.querySelector(".header .theme");
 
+spanNoti = document.createElement("span");
+spanNoti.innerText = "You Have No New Notification";
+notiHolder.append(spanNoti);
 sideLi.forEach((li) => {
     li.addEventListener("click", () => {
         sideLi.forEach((l) => {
@@ -158,15 +167,9 @@ navigator.getBattery().then((battery) => {
 search.onfocus = () => {
     search.style.width = "17rem";
 };
-let reg = new RegExp(`^[-=!@#$%^&*().,/0-9]+$`);
 search.addEventListener("keydown", (e) => {
     if (e.key == "Enter" && search.value.length >= 3) {
-        validate(
-            search.value
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "")
-                .toLowerCase()
-        );
+        handleSearch();
     }
     if (reg.test(e.key)) {
         e.preventDefault();
@@ -183,10 +186,10 @@ function handleSearch() {
     }
 }
 
-search.onblur = handleSearch;
 searchIcon.onclick = handleSearch;
 
 function validate(v) {
+    let valar = new Array();
     document.querySelectorAll(`body *`).forEach((e) => {
         e.classList.remove("found");
     });
@@ -196,20 +199,77 @@ function validate(v) {
             searchId = op.id;
         }
     });
-
+    let ulNoti = document.createElement("ul");
     document.querySelectorAll(`body #${searchId} *`).forEach((e) => {
         if (e.hasAttribute("data-search")) {
-            if (e.getAttribute("data-search").includes(v)) {
+            if (
+                e.innerText.split("\n").splice(0, 1).join("").toLowerCase() == v
+            ) {
                 if (!e.classList.contains("ac")) {
                     e.parentElement.firstElementChild.click();
                 }
+                notiHolder.childNodes.forEach((el) => {
+                    el.remove();
+                });
                 e.scrollIntoView({ behavior: "smooth", block: "start" });
+                spanNoti = document.createElement("span");
+                spanNoti.innerText = "You Have No New Notification";
+                notiHolder.append(spanNoti);
                 e.classList.add("found");
+                console.log("found");
+            } else if (e.getAttribute("data-search").split(" ").includes(v)) {
+                valar.push(e);
+                notiHolder.childNodes.forEach((el) => {
+                    el.remove();
+                });
+                not.classList.add("active");
+                let liNoti = document.createElement("li");
+                liNoti.textContent = e.innerText.split("\n").splice(0, 1);
+                ulNoti.append(liNoti);
+                notiHolder.append(ulNoti);
+                notiSliding(valar);
+                console.log(v);
+                console.log(e.getAttribute("data-search").toLowerCase());
+                console.log(e.getAttribute("data-search").toLowerCase() != v);
             }
         }
     });
 }
-// document.querySelectorAll("body *").forEach((e) => {
-//     if (e.classList.contains("s1")) {
-//     }
-// });
+function notiSliding(arr) {
+    let ntLi = document.querySelectorAll(".notification-div ul li");
+    ntLi.forEach((el, i) => {
+        el.addEventListener("click", () => {
+            document.querySelectorAll(`body *`).forEach((e) => {
+                e.classList.remove("found");
+            });
+            arr[i].classList.add("found");
+            closeNoti.click();
+            if (!arr[i].classList.contains("ac")) {
+                arr[i].parentElement.firstElementChild.click();
+            }
+            arr[i].scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+    });
+}
+
+notification.addEventListener("click", (e) => {
+    click = true;
+    not.classList.add("active");
+    if (click) {
+        notification.classList.add("clicked");
+    } else {
+        notification.classList.remove("clicked");
+    }
+});
+closeNoti.addEventListener("click", () => {
+    not.classList.remove("active");
+});
+darklight.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    if (document.body.classList.contains("dark")) {
+        darklight.lastElementChild.textContent = "dark";
+    } else {
+        darklight.lastElementChild.textContent = "light";
+    }
+});
+// document.querySelectorAll(".mod")[14].getAttribute("data-search").split(" ").slice(0,2)
