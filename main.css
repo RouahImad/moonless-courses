@@ -287,7 +287,8 @@ ul {
     background-color: black;
     transform: translate(-50%, -50%);
 }
-.gi ul .mod:hover {
+.gi ul .mod:hover,
+.found {
     margin-left: 37px;
     font-weight: bold;
     transform: scale(1.01);
@@ -295,6 +296,9 @@ ul {
     padding: 5px 10px 5px;
     border-radius: 6px;
     color: white;
+}
+.gi ul .mod.found::after {
+    display: none;
 }
 .gi ul .mod:hover a {
     color: white;
@@ -338,7 +342,7 @@ ul {
     margin-left: 5px;
 }
 .gi ul .mod .sub li:hover::after {
-    background-color: transparent;
+    /* background-color: transparent; */
 }
 /* end courses */
 /* about */
@@ -695,14 +699,7 @@ ul {
     align-items: center;
     gap: 5px;
 }
-.found {
-    background-color: var(--highlight-color);
-    color: white;
-    border-radius: 6px;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-}
+
 .header .cont-pref {
     display: flex;
     align-items: center;
