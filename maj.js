@@ -241,7 +241,6 @@ function notiSliding(arr, where) {
         });
     });
 }
-//
 elements.notification.addEventListener("click", () => {
     elements.not.classList.add("active");
 });
