@@ -213,6 +213,7 @@ function validate(v) {
                 .splice(0, 1)} (${searchId})</li>`;
             notiSliding(valar, bodySearch);
             elements.notification.classList.add("clicked");
+            window.scrollTo(0, 0);
         }
     });
 }
