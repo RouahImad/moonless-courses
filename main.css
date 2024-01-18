@@ -320,6 +320,9 @@ ul {
     border-radius: 6px;
     color: var(--white-color) !important;
 }
+.found > a {
+    color: var(--white-color) !important;
+}
 .gi ul .mod:hover > a,
 .gi ul .mod .sub a {
     color: var(--white-color);

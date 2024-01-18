@@ -9,7 +9,7 @@ const elements = {
     mug: document.querySelector("#about .mug"),
     mon: document.querySelector(".mon"),
     sm: document.querySelectorAll(".gi span"),
-    reg: /^[-=!@#$%^&*().,/0-9]+$/,
+    reg: /^[-=!@$%^&*().,/0-9]+$/,
     notification: document.querySelector(".notification"),
     not: document.querySelector(".notification-div"),
     notiHolder: document.querySelector(".notification-content"),
@@ -152,7 +152,10 @@ function checkSize() {
 window.addEventListener("resize", checkSize);
 
 elements.search.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" && elements.search.value.length >= 3) {
+    if (
+        (e.key === "Enter" && elements.search.value.length >= 3) ||
+        (e.key === "Enter" && elements.search.value.includes("#"))
+    ) {
         elements.search.blur();
         handleSearch();
     }
@@ -164,7 +167,10 @@ elements.search.addEventListener("keydown", (e) => {
 elements.searchIcon.onclick = handleSearch;
 
 function handleSearch() {
-    if (elements.search.value !== "" && elements.search.value.length >= 3) {
+    if (
+        (elements.search.value !== "" && elements.search.value.length >= 3) ||
+        elements.search.value.includes("#")
+    ) {
         validate(
             elements.search.value
                 .normalize("NFD")
