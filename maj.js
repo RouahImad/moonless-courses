@@ -192,7 +192,7 @@ function validate(v) {
         }
     });
     const ulNoti = document.createElement("ul");
-    let bodySearch = document.querySelectorAll(`body #${searchId} .mod`);
+    let bodySearch = document.querySelectorAll(`body #${searchId}s .mod`);
     bodySearch.forEach((e) => {
         if (
             e.innerText
@@ -277,7 +277,6 @@ setInterval(timeing(), 1000);
 function timeing() {
     let date = new Date();
     let hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
-    console.log(hours / 10 < 1 ? +("0" + hours) : hours);
     let minutes =
         date.getMinutes() / 10 < 1
             ? "0" + date.getMinutes()
