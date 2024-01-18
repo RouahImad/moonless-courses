@@ -1,3 +1,9 @@
+let abb = document.querySelectorAll("body > input");
+abb.forEach((e) => {
+    if (e.checked) {
+        console.log(e.id);
+    }
+});
 const elements = {
     search: document.querySelector(".intro .search .box input"),
     options: document.querySelectorAll(".intro .search .options input"),
@@ -43,6 +49,7 @@ elements.go.addEventListener("click", () => {
 });
 
 window.addEventListener("scroll", () => {
+    elements.closeNoti.click();
     elements.sideLi.forEach((l) => l.classList.remove("active"));
     const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
     const scrolled = (scrollTop / (scrollHeight - clientHeight)) * 100;
@@ -152,6 +159,7 @@ function checkSize() {
 window.addEventListener("resize", checkSize);
 
 elements.search.addEventListener("keydown", (e) => {
+    elements.closeNoti.click();
     if (
         (e.key === "Enter" && elements.search.value.length >= 3) ||
         (e.key === "Enter" && elements.search.value.includes("#"))
@@ -185,43 +193,45 @@ function validate(v) {
         e.classList.remove("found");
     });
 
-    let searchId;
+    let searchId = [];
     elements.options.forEach((op) => {
         if (op.checked) {
-            searchId = op.id;
+            searchId.push(op.id);
         }
     });
     const ulNoti = document.createElement("ul");
-    let bodySearch = document.querySelectorAll(`body #${searchId}s .mod`);
-    bodySearch.forEach((e) => {
-        if (
-            e.innerText
-                .split("\n")
-                .splice(0, 1)
-                .join("")
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "")
-                .toLowerCase() === v
-        ) {
-            if (!e.parentElement.classList.contains("ac")) {
-                e.parentElement.firstElementChild.click();
+    searchId.forEach((srid) => {
+        let bodySearch = document.querySelectorAll(`body #${srid}s .mod`);
+        bodySearch.forEach((e) => {
+            if (
+                e.innerText
+                    .split("\n")
+                    .splice(0, 1)
+                    .join("")
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "")
+                    .toLowerCase() === v
+            ) {
+                if (!e.parentElement.classList.contains("ac")) {
+                    e.parentElement.firstElementChild.click();
+                }
+                elements.notiHolder.innerHTML =
+                    "<span>You Have No New Notification</span>";
+                e.classList.add("found");
+                e.scrollIntoView();
+                elements.notification.classList.remove("clicked");
+            } else if (e.getAttribute("data-search").includes(v)) {
+                valar.push(e);
+                elements.notiHolder.innerHTML = "";
+                elements.not.classList.add("active");
+                elements.notiHolder.append(ulNoti);
+                elements.notiHolder.firstElementChild.innerHTML += `<li class="Noti${srid}">${e.innerText
+                    .split("\n")
+                    .splice(0, 1)} (${srid})</li>`;
+                notiSliding(valar, bodySearch);
+                elements.notification.classList.add("clicked");
             }
-            elements.notiHolder.innerHTML =
-                "<span>You Have No New Notification</span>";
-            e.classList.add("found");
-            e.scrollIntoView();
-            elements.notification.classList.remove("clicked");
-        } else if (e.getAttribute("data-search").includes(v)) {
-            valar.push(e);
-            elements.notiHolder.innerHTML = "";
-            elements.not.classList.add("active");
-            elements.notiHolder.append(ulNoti);
-            elements.notiHolder.firstElementChild.innerHTML += `<li>${e.innerText
-                .split("\n")
-                .splice(0, 1)} (${searchId})</li>`;
-            notiSliding(valar, bodySearch);
-            elements.notification.classList.add("clicked");
-        }
+        });
     });
 }
 

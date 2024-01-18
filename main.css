@@ -747,7 +747,7 @@ ul {
 .notification-div {
     position: fixed;
     width: 700px;
-    top: -75%;
+    top: -100%;
     background-color: var(--second-color);
     border: 1px solid var(--dark-color);
     z-index: 9888;
@@ -770,10 +770,38 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    list-style: circle;
 }
 .notification-div .notification-content ul li {
     cursor: pointer;
+    position: relative;
+}
+.notification-div .notification-content ul li::before {
+    position: absolute;
+    font-family: "Font Awesome 6 Free";
+    left: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.notification-div .notification-content ul li.Noticourse {
+    margin-bottom: 10px;
+}
+.notification-div .notification-content ul li.Notiexercise {
+    margin-bottom: 10px;
+}
+.notification-div .notification-content ul li.Notitutorial {
+}
+.notification-div .notification-content ul li.Noticourse::before {
+    content: "\e53d";
+    font-weight: 900;
+}
+.notification-div .notification-content ul li.Notiexercise::before {
+    content: "\f44b";
+    font-weight: 900;
+}
+.notification-div .notification-content ul li.Notitutorial::before {
+    font-family: "Font Awesome 6 Brands";
+    content: "\f167";
+    font-weight: 400;
 }
 @media (max-width: 767px) {
     .notification-div {
