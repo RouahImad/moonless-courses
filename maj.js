@@ -1,9 +1,3 @@
-let abb = document.querySelectorAll("body > input");
-abb.forEach((e) => {
-    if (e.checked) {
-        console.log(e.id);
-    }
-});
 const elements = {
     search: document.querySelector(".intro .search .box input"),
     options: document.querySelectorAll(".intro .search .options input"),
@@ -46,6 +40,12 @@ elements.go.addEventListener("click", () => {
     elements.go.style.setProperty("bottom", "65vh");
     elements.sideLi.forEach((li) => li.classList.remove("active"));
     setTimeout(() => elements.go.style.setProperty("bottom", "40px"), 1000);
+});
+
+elements.options.forEach((op) => {
+    op.onclick = () => {
+        elements.closeNoti.click();
+    };
 });
 
 window.addEventListener("scroll", () => {
