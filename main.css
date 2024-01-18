@@ -398,7 +398,7 @@ ul {
 }
 #about .infos .details .socials {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
     gap: 20px;
     width: 100%;
     margin-left: 10px;
@@ -423,12 +423,7 @@ ul {
     color: var(--dark-color);
     transform: scale(1.1);
 }
-@media (min-width: 637px) and (max-width: 767px) {
-    #about .infos .details .socials {
-        place-items: center;
-    }
-}
-@media (min-width: 960px) {
+@media (min-width: 1238px) {
     #about .infos .details .socials {
         place-items: center;
     }
@@ -632,7 +627,7 @@ ul {
     border: none;
     border-radius: 6px;
     padding: 10px;
-    width: 13rem;
+    width: 15rem;
     transition: var(--main-transition);
     background-color: var(--highlight-color);
     color: white;
