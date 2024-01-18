@@ -115,7 +115,7 @@ window.onload = () => {
             charge.style.width = batteryLevel;
             chargeLevel.textContent = batteryLevel;
 
-            if (parseInt(battery.level * 100) >= 70) {
+            if (parseInt(battery.level * 100) >= 60) {
                 document.documentElement.style.setProperty(
                     "--charge-color",
                     "#00FF00"
@@ -140,18 +140,20 @@ elements.search.onfocus = () => {
         (window.innerWidth * 50) /
         (window.innerWidth + window.innerHeight * 0.7)
     ).toFixed()}em`;
-    checkSize();
+    window.scrollTo(0, 0);
 };
+checkSize();
 function checkSize() {
-    window.addEventListener("resize", () => {
-        elements.search.style.width = `${(
-            (window.innerWidth * 50) /
-            (window.innerWidth + window.innerHeight * 0.7)
-        ).toFixed()}em`;
-    });
+    elements.search.style.width = `${(
+        (window.innerWidth * 50) /
+        (window.innerWidth + window.innerHeight * 0.7)
+    ).toFixed()}em`;
 }
+window.addEventListener("resize", checkSize);
+
 elements.search.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && elements.search.value.length >= 3) {
+        elements.search.blur();
         handleSearch();
     }
     if (elements.reg.test(e.key)) {
@@ -213,7 +215,6 @@ function validate(v) {
                 .splice(0, 1)} (${searchId})</li>`;
             notiSliding(valar, bodySearch);
             elements.notification.classList.add("clicked");
-            window.scrollTo(0, 0);
         }
     });
 }

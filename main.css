@@ -193,11 +193,12 @@ ul {
     background-image: url("img/moonless.jpg");
     background-attachment: fixed;
     background-size: cover;
-    min-height: 500px;
+    min-height: 430px;
     background-repeat: no-repeat;
     color: white;
     display: flex;
     flex-direction: column;
+    gap: 20px;
     justify-content: center;
     margin-bottom: 20px;
 }
@@ -611,7 +612,8 @@ ul {
     }
 }
 .intro .search {
-    cursor: pointer;
+    width: fit-content;
+    margin: 0 auto;
     display: flex;
     gap: 15px;
     flex-direction: column;
@@ -627,7 +629,6 @@ ul {
     border: none;
     border-radius: 6px;
     padding: 10px;
-    width: 15rem;
     transition: var(--main-transition);
     background-color: var(--highlight-color);
     color: white;
@@ -676,6 +677,7 @@ ul {
     position: absolute;
     right: 10px;
     font-size: 22px;
+    cursor: pointer;
 }
 .intro .search .options {
     font-size: 16px;
@@ -790,7 +792,6 @@ ul {
     bottom: 13px;
     right: 13px;
     text-align: center;
-    padding: 7px 22px;
     border-radius: 10px;
     cursor: pointer;
     font-size: 14px;
