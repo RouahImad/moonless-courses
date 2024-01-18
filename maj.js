@@ -276,13 +276,13 @@ setInterval(timeing(), 1000);
 
 function timeing() {
     let date = new Date();
-    let hours =
-        date.getHours() / 10 < 1 ? +("0" + date.getHours()) : date.getHours();
+    let hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
+    console.log(hours / 10 < 1 ? +("0" + hours) : hours);
     let minutes =
         date.getMinutes() / 10 < 1
             ? "0" + date.getMinutes()
             : date.getMinutes();
     elements.time.textContent = `${
-        hours > 12 ? hours - 12 : hours
+        hours / 10 < 1 ? "0" + hours : hours
     }:${minutes} ${hours > 12 ? "PM" : "AM"}`;
 }
