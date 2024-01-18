@@ -3,7 +3,7 @@ const elements = {
     options: document.querySelectorAll(".intro .search .options input"),
     searchIcon: document.querySelector(".intro .search .box i"),
     sideLi: document.querySelectorAll(".sidebar ul li a"),
-    go: document.querySelector(".content img"),
+    go: document.querySelector(".content .go img"),
     posin: document.querySelector(".page .posIn"),
     siLi: document.querySelectorAll(".content .wrapper > div"),
     mug: document.querySelector("#about .mug"),
@@ -15,11 +15,9 @@ const elements = {
     notiHolder: document.querySelector(".notification-content"),
     closeNoti: document.querySelector(".close"),
     darklight: document.querySelector(".header .theme"),
+    time: document.querySelector(".content .header .time"),
 };
-
-const spanNoti = document.createElement("span");
-spanNoti.innerText = "You Have No New Notification";
-elements.notiHolder.append(spanNoti);
+elements.notiHolder.innerHTML = "<span>You Have No New Notification</span>";
 
 elements.sideLi.forEach((li) => {
     li.addEventListener("click", () => {
@@ -52,22 +50,26 @@ window.addEventListener("scroll", () => {
 
     if (window.scrollY < 350) {
         elements.go.style.opacity = 0;
-        elements.go.classList.remove("clicked");
+        elements.go.style.display = "none";
     } else {
         elements.go.style.opacity = 1;
+        elements.go.style.display = "block";
     }
 
     let index;
     if (scrollTop >= elements.siLi[0].offsetTop - 80) {
         elements.siLi.forEach((e, i) => {
-            if (e.offsetTop - 100 <= scrollTop) {
+            if (e.offsetTop - 230 <= scrollTop) {
                 index = i;
             }
         });
         elements.sideLi[index].classList.add("active");
-    } else if (scrollHeight <= (scrollTop + clientHeight).toFixed()) {
-        index = elements.sideLi.length - 1;
-        elements.sideLi[index - 1].classList.add("active");
+    }
+    if (scrollHeight <= (scrollTop + clientHeight + 60).toFixed()) {
+        elements.sideLi.forEach((e) => {
+            e.classList.remove("active");
+        });
+        elements.sideLi[elements.sideLi.length - 2].classList.add("active");
     }
 
     elements.mug.classList.toggle(
@@ -78,13 +80,10 @@ window.addEventListener("scroll", () => {
 
 elements.sm.forEach((s) => {
     s.addEventListener("click", () => {
-        const s1L = document.querySelectorAll(
-            `#${s.parentElement.parentElement.parentElement.id} .gi .${s.textContent} li`
-        );
         const i = s.firstElementChild;
         i.classList.toggle("fa-arrow-up-wide-short");
         i.classList.toggle("fa-arrow-down-short-wide");
-        s1L.forEach((li) => li.classList.toggle("ac"));
+        s.parentElement.classList.toggle("ac");
     });
 });
 const chargeLevel = document.getElementById("charge-level");
@@ -137,9 +136,20 @@ window.onload = () => {
 };
 
 elements.search.onfocus = () => {
-    elements.search.style.width = "17rem";
+    elements.search.style.width = `${(
+        (window.innerWidth * 50) /
+        (window.innerWidth + window.innerHeight * 0.7)
+    ).toFixed()}em`;
+    checkSize();
 };
-
+function checkSize() {
+    window.addEventListener("resize", () => {
+        elements.search.style.width = `${(
+            (window.innerWidth * 50) /
+            (window.innerWidth + window.innerHeight * 0.7)
+        ).toFixed()}em`;
+    });
+}
 elements.search.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && elements.search.value.length >= 3) {
         handleSearch();
@@ -161,7 +171,6 @@ function handleSearch() {
         );
     }
 }
-
 function validate(v) {
     const valar = [];
     document.querySelectorAll(`body *`).forEach((e) => {
@@ -174,79 +183,59 @@ function validate(v) {
             searchId = op.id;
         }
     });
-
     const ulNoti = document.createElement("ul");
-
-    document.querySelectorAll(`body #${searchId} *`).forEach((e) => {
-        if (e.hasAttribute("data-search")) {
-            if (
-                e.innerText.split("\n").splice(0, 1).join("").toLowerCase() ===
-                v
-            ) {
-                if (!e.classList.contains("ac")) {
-                    e.parentElement.firstElementChild.click();
-                }
-
-                elements.notiHolder.childNodes.forEach((el) => {
-                    el.remove();
-                });
-
-                e.scrollIntoView({ behavior: "smooth", block: "start" });
-
-                spanNoti = document.createElement("span");
-                spanNoti.innerText = "You Have No New Notification";
-                elements.notiHolder.append(spanNoti);
-
-                e.classList.add("found");
-            } else if (e.getAttribute("data-search").includes(v)) {
-                valar.push(e);
-
-                elements.notiHolder.childNodes.forEach((el) => {
-                    el.remove();
-                });
-
-                elements.not.classList.add("active");
-                const liNoti = document.createElement("li");
-                liNoti.textContent = e.innerText.split("\n").splice(0, 1);
-                ulNoti.append(liNoti);
-                elements.notiHolder.append(ulNoti);
-
-                notiSliding(valar);
+    let bodySearch = document.querySelectorAll(`body #${searchId} .mod`);
+    bodySearch.forEach((e) => {
+        if (
+            e.innerText
+                .split("\n")
+                .splice(0, 1)
+                .join("")
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .toLowerCase() === v
+        ) {
+            if (!e.parentElement.classList.contains("ac")) {
+                e.parentElement.firstElementChild.click();
             }
+            elements.notiHolder.innerHTML =
+                "<span>You Have No New Notification</span>";
+            e.classList.add("found");
+            e.scrollIntoView();
+            elements.notification.classList.remove("clicked");
+        } else if (e.getAttribute("data-search").includes(v)) {
+            valar.push(e);
+            elements.notiHolder.innerHTML = "";
+            elements.not.classList.add("active");
+            elements.notiHolder.append(ulNoti);
+            elements.notiHolder.firstElementChild.innerHTML += `<li>${e.innerText
+                .split("\n")
+                .splice(0, 1)} (${searchId})</li>`;
+            notiSliding(valar, bodySearch);
+            elements.notification.classList.add("clicked");
         }
     });
 }
 
-function notiSliding(arr) {
+function notiSliding(arr, where) {
     const ntLi = document.querySelectorAll(".notification-div ul li");
-
     ntLi.forEach((el, i) => {
         el.addEventListener("click", () => {
-            document.querySelectorAll(`body *`).forEach((e) => {
+            where.forEach((e) => {
                 e.classList.remove("found");
             });
-
             arr[i].classList.add("found");
             elements.closeNoti.click();
-
-            if (!arr[i].classList.contains("ac")) {
+            if (!arr[i].parentElement.classList.contains("ac")) {
                 arr[i].parentElement.firstElementChild.click();
             }
-
-            arr[i].scrollIntoView({ behavior: "smooth", block: "start" });
+            arr[i].scrollIntoView();
         });
     });
 }
-
+//
 elements.notification.addEventListener("click", () => {
-    click = true;
     elements.not.classList.add("active");
-
-    if (click) {
-        elements.notification.classList.add("clicked");
-    } else {
-        elements.notification.classList.remove("clicked");
-    }
 });
 
 elements.closeNoti.addEventListener("click", () => {
@@ -254,13 +243,39 @@ elements.closeNoti.addEventListener("click", () => {
 });
 
 elements.darklight.addEventListener("click", () => {
+    let themeVal;
+    localStorage.removeItem("theme");
     document.body.classList.toggle("dark");
-
     if (document.body.classList.contains("dark")) {
         elements.darklight.lastElementChild.textContent = "dark";
+        themeVal = "dark";
     } else {
         elements.darklight.lastElementChild.textContent = "light";
+        themeVal = "light";
     }
+    localStorage.setItem("theme", themeVal);
 });
 
-// End of your code...
+if (localStorage.getItem("theme")) {
+    if (
+        !document.body.classList.contains("dark") &&
+        localStorage.theme == "dark"
+    ) {
+        elements.darklight.click();
+    }
+}
+
+setInterval(timeing(), 1000);
+
+function timeing() {
+    let date = new Date();
+    let hours =
+        date.getHours() / 10 < 1 ? +("0" + date.getHours()) : date.getHours();
+    let minutes =
+        date.getMinutes() / 10 < 1
+            ? "0" + date.getMinutes()
+            : date.getMinutes();
+    elements.time.textContent = `${
+        hours > 12 ? hours - 12 : hours
+    }:${minutes} ${hours > 12 ? "PM" : "AM"}`;
+}
