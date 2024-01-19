@@ -293,5 +293,5 @@ function timeing() {
             : date.getMinutes();
     elements.time.textContent = `${
         hours / 10 < 1 ? "0" + hours : hours
-    }:${minutes} ${hours > 12 ? "PM" : "AM"}`;
+    }:${minutes} ${date.getHours() >= 12 ? "PM" : "AM"}`;
 }
