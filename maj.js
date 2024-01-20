@@ -282,8 +282,6 @@ if (localStorage.getItem("theme")) {
     }
 }
 
-setInterval(timeing(), 1000);
-
 function timeing() {
     let date = new Date();
     let hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
@@ -295,3 +293,5 @@ function timeing() {
         hours / 10 < 1 ? "0" + hours : hours
     }:${minutes} ${date.getHours() >= 12 ? "PM" : "AM"}`;
 }
+
+setInterval(timeing, 1000);
