@@ -592,7 +592,6 @@ ul {
     position: absolute;
     font-weight: 500;
     font-size: 11px;
-    color: var(--dark-color);
 }
 .active-charging {
     -webkit-animation: charge-an 3s infinite linear;
@@ -615,6 +614,8 @@ ul {
     }
 }
 .intro .search {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
     margin: 0 auto;
     display: flex;
@@ -653,10 +654,8 @@ ul {
 }
 .intro .search .box input {
     border: none;
-    border-radius: 6px;
     transition: var(--main-transition);
-    background-color: var(--highlight-color);
-    color: var(--highlight-color);
+    color: white;
     caret-color: var(--second-color);
     height: 3px;
     padding: 0 10px 0 40px;
@@ -668,12 +667,13 @@ ul {
     }
 }
 .intro .search .box input.focused {
-    color: var(--white-color);
+    border-radius: 4px;
+    color: #333;
     height: auto;
     padding: 10px 10px 10px 40px;
 }
 .intro .search .box i {
-    color: var(--white-color);
+    color: var(--highlight-color);
     transition: var(--main-transition);
     display: none;
     position: absolute;
@@ -736,7 +736,16 @@ ul {
     background-color: red;
     right: -1px;
     top: 2px;
+    -webkit-animation: blink 0.8s infinite;
     animation: blink 0.8s infinite;
+}
+@-webkit-keyframes blink {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 @keyframes blink {
     from {
