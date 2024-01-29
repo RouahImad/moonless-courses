@@ -658,8 +658,6 @@ ul {
     gap: 10px;
     font-size: 17px;
     font-family: "Aref Ruqaa Ink";
-}
-.header .base-info span {
     color: var(--dark-color);
 }
 /* Notification Styles */
