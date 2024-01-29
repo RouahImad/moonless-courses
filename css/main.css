@@ -193,7 +193,7 @@ ul {
 .content .intro {
     padding-bottom: 10px;
     position: relative;
-    background-image: url("/img/moonless.jpg");
+    background-image: url("img/moonless.jpg");
     background-attachment: fixed;
     background-size: cover;
     min-height: 430px;
