@@ -184,7 +184,6 @@ document.addEventListener("DOMContentLoaded", function () {
     elements.search.addEventListener("click", handFocus);
     elements.search.addEventListener("select", handFocus);
     elements.searchIcon.onclick = () => {
-        handFocus();
         handleSearch();
     };
     elements.search.addEventListener("keydown", (e) => {
@@ -205,10 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
         elements.search.classList.add("focused");
     }
     document.addEventListener("click", (e) => {
-        if (
-            !elements.search.contains(e.target) &&
-            !elements.searchIcon.contains(e.target)
-        ) {
+        if (!elements.search.contains(e.target)) {
             elements.search.classList.remove("focused");
         }
     });
@@ -316,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function () {
             elements.darklight.click();
         }
     }
-    function timeing() {
+    function timing() {
         let date = new Date();
         let hours =
             date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
@@ -326,5 +322,5 @@ document.addEventListener("DOMContentLoaded", function () {
             (hours / 10 < 1 ? "0" : "") + hours
         }:${minutes} ${date.getHours() >= 12 ? "PM" : "AM"}`;
     }
-    setInterval(timeing, 1000);
+    setInterval(timing, 1000);
 });
