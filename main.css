@@ -10,6 +10,16 @@
     --dark-color: #333;
     --white-color: #fff;
 }
+@media (prefers-color-scheme: dark) {
+    body {
+        --main-color: #494947;
+        --second-color: #2b261b;
+        --button-color: #afc8ad;
+        --highlight-color: #88ab8e;
+        --dark-color: #fff;
+        --white-color: #000;
+    }
+}
 body.dark {
     --main-color: #494947;
     --second-color: #2b261b;
@@ -37,19 +47,22 @@ body.login {
 }
 a {
     text-decoration: none;
+    color: var(--dark-color);
 }
 ul {
     list-style: none;
     padding: 0;
 }
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 14px;
 }
 ::-webkit-scrollbar-track {
-    background-color: var(--white-color);
+    background-color: var(--second-color);
+    border-radius: 15px;
 }
 ::-webkit-scrollbar-thumb {
     background-color: var(--button-color);
+    border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:hover {
     background-color: var(--highlight-color);
@@ -69,7 +82,7 @@ ul {
 }
 .sidebar {
     width: 17%;
-    height: 100vh;
+    height: 100%;
     position: fixed;
     box-shadow: 0 0 10px rgba(51, 51, 51, 0.2);
     background-color: var(--second-color);
@@ -107,37 +120,32 @@ ul {
     margin-bottom: 10px;
     font-size: 25px;
     font-family: "Aref Ruqaa Ink";
+    transition: var(--main-transition);
 }
-.sidebar ul li {
+.sidebar h1:hover,
+.sidebar h1 a:hover {
+    color: var(--highlight-color);
+    transform: scale(1.1);
+}
+.sidebar ul li:has(> a) {
     width: 93%;
     text-align: center;
 }
-.sidebar ul li a {
+.sidebar ul li:has(> a) a {
     margin-bottom: 5px;
     border-radius: 5px;
     padding: 6px;
     display: block;
     width: 100%;
-    color: var(--dark-color);
 }
-.sidebar h3,
-.sidebar h3 a {
-    transition: var(--main-transition);
-    color: var(--dark-color);
-}
-.sidebar h3:hover,
-.sidebar h3 a:hover {
-    color: var(--highlight-color);
-    transform: scale(1.1);
-}
-.sidebar ul li a {
+.sidebar ul li:has(> a) a {
     transition: var(--main-transition);
 }
-.sidebar ul li a.active {
+.sidebar ul li:has(> a) a.active {
     background-color: var(--highlight-color);
     color: var(--white-color);
 }
-.sidebar ul li a span {
+.sidebar ul li:has(> a) a span {
     font-size: 14px;
     font-weight: bold;
     margin-left: 15px;
@@ -163,10 +171,12 @@ ul {
     right: 10px;
     bottom: 10px;
     z-index: 999;
-    transition: var(--main-transition) bottom 0.9s, opacity 0.5s;
+    transition: all var(--main-transition), bottom 0.9s;
     opacity: 0;
     -webkit-filter: drop-shadow(0px 0px 3px var(--dark-color));
     filter: drop-shadow(0px 0px 3px var(--dark-color));
+}
+.content .go img.clicked {
 }
 .content .go img:hover {
     animation: updown 650ms infinite;
@@ -269,7 +279,7 @@ ul {
     color: var(--dark-color);
     position: relative;
 }
-.gi ul > span {
+.gi ul > li span {
     display: block;
     color: var(--highlight-color);
     margin-bottom: 10px;
@@ -293,16 +303,12 @@ ul {
 .gi ul.ac .mod {
     margin-bottom: 10px;
 }
-.gi ul.ac li {
+.gi ul.ac li:not(:first-of-type) {
     max-height: 500px;
     padding: 5px 10px;
 }
-.gi ul .mod > a {
-    color: var(--dark-color);
-}
 .gi ul .mod:hover,
 .found {
-    font-weight: bold;
     transform: scale(1.01);
     background-color: var(--highlight-color);
     padding: 5px 10px 5px;
@@ -310,7 +316,7 @@ ul {
     color: var(--white-color) !important;
 }
 .found > a {
-    color: var(--white-color) !important;
+    color: currentColor !important;
 }
 .gi ul .mod:hover > a,
 .gi ul .mod .sub a {
@@ -331,7 +337,6 @@ ul {
     max-height: 500px;
 }
 .gi ul .mod .sub li {
-    font-weight: bold;
     position: relative;
     transition: var(--main-transition);
 }
@@ -777,4 +782,51 @@ ul {
 body.dark .header .theme img {
     transform: rotate(1turn);
     filter: invert(1);
+}
+.boxload {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background-color: var(--second-color);
+    display: grid;
+    place-items: center;
+    transition: opacity 0.45s, visibility 1s;
+}
+.fade {
+    opacity: 0;
+    visibility: hidden;
+}
+.loader {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid;
+    border-color: transparent var(--highlight-color) transparent transparent;
+    animation: load 0.3s 6;
+}
+@keyframes load {
+    12.5% {
+        transform: rotate(45deg);
+    }
+    25% {
+        transform: rotate(90deg);
+    }
+    37.5% {
+        transform: rotate(135deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    62.5% {
+        transform: rotate(225deg);
+    }
+    75% {
+        transform: rotate(270deg);
+    }
+    87.5% {
+        transform: rotate(315deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

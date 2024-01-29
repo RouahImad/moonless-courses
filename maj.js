@@ -1,29 +1,36 @@
+const elements = {
+    search: document.querySelector(".intro .search .box input"),
+    options: document.querySelectorAll(".intro .search .options input"),
+    searchIcon: document.querySelector(".intro .search .box i"),
+    sideLi: document.querySelectorAll(".sidebar ul li:has(> a) a"),
+    go: document.querySelector(".content .go img"),
+    posin: document.querySelector(".page .posIn"),
+    siLi: document.querySelectorAll(".content .wrapper > div"),
+    mug: document.querySelector("#about .mug"),
+    mon: document.querySelector(".mon"),
+    sm: document.querySelectorAll(".gi ul > li span"),
+    reg: /^[-=!@$%^&*().,/0-9]+$/,
+    notification: document.querySelector(".notification"),
+    not: document.querySelector(".notification-div"),
+    notiHolder: document.querySelector(".notification-content"),
+    closeNoti: document.querySelector(".close"),
+    darklight: document.querySelector(".header .theme"),
+    time: document.querySelector(".content .header .time"),
+    elRev: document.querySelectorAll(".page .content h3"),
+};
+window.addEventListener("load", () => {
+    if (matchMedia("(prefers-color-scheme: dark)").matches) {
+        elements.darklight.lastElementChild.textContent = "dark";
+        localStorage.setItem("theme", "dark");
+    }
+    document.querySelector(".boxload").classList.add("fade");
+});
 document.addEventListener("DOMContentLoaded", function () {
-    const elements = {
-        search: document.querySelector(".intro .search .box input"),
-        options: document.querySelectorAll(".intro .search .options input"),
-        searchIcon: document.querySelector(".intro .search .box i"),
-        sideLi: document.querySelectorAll(".sidebar ul li a"),
-        go: document.querySelector(".content .go img"),
-        posin: document.querySelector(".page .posIn"),
-        siLi: document.querySelectorAll(".content .wrapper > div"),
-        mug: document.querySelector("#about .mug"),
-        mon: document.querySelector(".mon"),
-        sm: document.querySelectorAll(".gi span"),
-        reg: /^[-=!@$%^&*().,/0-9]+$/,
-        notification: document.querySelector(".notification"),
-        not: document.querySelector(".notification-div"),
-        notiHolder: document.querySelector(".notification-content"),
-        closeNoti: document.querySelector(".close"),
-        darklight: document.querySelector(".header .theme"),
-        time: document.querySelector(".content .header .time"),
-        h3: document.querySelectorAll(".page .content h3"),
-    };
-    elements.h3.forEach((h) => {
+    elements.elRev.forEach((h) => {
         h.classList.add("unreveal");
     });
     function checkVisibility() {
-        elements.h3.forEach((h) => {
+        elements.elRev.forEach((h) => {
             if (isElementVisible(h)) {
                 h.classList.add("reveal");
             } else {
@@ -68,18 +75,28 @@ document.addEventListener("DOMContentLoaded", function () {
             elements.closeNoti.click();
         };
     });
+    function posing() {
+        let scrolled =
+            (document.documentElement.scrollTop /
+                (document.documentElement.scrollHeight -
+                    document.documentElement.clientHeight)) *
+            100;
+        elements.posin.style.width = `${scrolled}%`;
+    }
     window.addEventListener("scroll", () => {
-        checkVisibility();
-        elements.closeNoti.click();
-        elements.sideLi.forEach((l) => l.classList.remove("active"));
+        posing();
         const { scrollHeight, scrollTop, clientHeight } =
             document.documentElement;
-        const scrolled = (scrollTop / (scrollHeight - clientHeight)) * 100;
-        elements.posin.style.width = `${scrolled}%`;
+        if (window.scrollY >= 150) {
+            elements.closeNoti.click();
+        }
+        checkVisibility();
+        elements.sideLi.forEach((l) => l.classList.remove("active"));
         if (window.scrollY < 350) {
             elements.go.style.opacity = 0;
             elements.go.style.display = "none";
         } else {
+            elements.closeNoti.click();
             elements.go.style.opacity = 1;
             elements.go.style.display = "block";
         }
@@ -110,12 +127,22 @@ document.addEventListener("DOMContentLoaded", function () {
             const i = s.firstElementChild;
             i.classList.toggle("fa-arrow-up-wide-short");
             i.classList.toggle("fa-arrow-down-short-wide");
-            s.parentElement.classList.toggle("ac");
+            s.parentElement.parentElement.classList.toggle("ac");
+            ch = true;
+            posing();
         });
     });
     const chargeLevel = document.getElementById("charge-level");
     const charge = document.getElementById("charge");
     window.onload = () => {
+        posing();
+        if (window.scrollY < 350) {
+            elements.go.style.opacity = 0;
+            elements.go.style.display = "none";
+        } else {
+            elements.go.style.opacity = 1;
+            elements.go.style.display = "block";
+        }
         if (!navigator.getBattery) {
             console.log("Battery status API is not supported");
             return false;
@@ -154,9 +181,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     };
-    elements.search.onfocus = () => {
-        window.scrollTo(0, 0);
-    };
     elements.search.addEventListener("click", handFocus);
     elements.search.addEventListener("select", handFocus);
     elements.searchIcon.onclick = () => {
@@ -169,6 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
             (e.key === "Enter" && elements.search.value.length >= 3) ||
             (e.key === "Enter" && elements.search.value.includes("#"))
         ) {
+            window.scrollTo(0, 0);
             handleSearch();
         }
         if (elements.reg.test(e.key)) {
@@ -226,7 +251,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         .toLowerCase() === v
                 ) {
                     if (!e.parentElement.classList.contains("ac")) {
-                        e.parentElement.firstElementChild.click();
+                        e.parentElement.firstElementChild.firstElementChild.click();
                     }
                     elements.notiHolder.innerHTML =
                         "<span>You Have No New Notification</span>";
@@ -257,7 +282,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 arr[i].classList.add("found");
                 elements.closeNoti.click();
                 if (!arr[i].parentElement.classList.contains("ac")) {
-                    arr[i].parentElement.firstElementChild.click();
+                    arr[
+                        i
+                    ].parentElement.firstElementChild.firstElementChild.click();
                 }
                 arr[i].scrollIntoView();
             });
@@ -271,7 +298,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     elements.darklight.addEventListener("click", () => {
         let themeVal;
-        localStorage.removeItem("theme");
         document.body.classList.toggle("dark");
         if (document.body.classList.contains("dark")) {
             elements.darklight.lastElementChild.textContent = "dark";
