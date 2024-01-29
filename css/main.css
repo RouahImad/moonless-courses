@@ -84,7 +84,7 @@ ul {
 }
 .sidebar {
     width: 17%;
-    height: 100%;
+    height: 100vh;
     position: fixed;
     box-shadow: 0 0 10px rgba(51, 51, 51, 0.2);
     background-color: var(--second-color);
