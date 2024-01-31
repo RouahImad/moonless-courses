@@ -17,26 +17,29 @@ const elements = {
     darklight: document.querySelector(".header .theme"),
     time: document.querySelector(".content .header .time"),
     elRev: document.querySelectorAll(".page .content h3"),
+    intdv: document.querySelector(".intro > div"),
+    load: document.querySelector(".boxload"),
 };
 window.addEventListener("load", () => {
     if (matchMedia("(prefers-color-scheme: dark)").matches) {
         elements.darklight.lastElementChild.textContent = "dark";
         localStorage.setItem("theme", "dark");
     }
-    document.querySelector(".boxload").classList.add("fade");
+    elements.load.classList.add("fade");
 });
 document.addEventListener("DOMContentLoaded", function () {
     elements.elRev.forEach((h) => {
-        h.classList.add("unreveal");
+        h.classList.add("hide");
     });
     function checkVisibility() {
         elements.elRev.forEach((h) => {
             if (isElementVisible(h)) {
-                h.classList.add("reveal");
-            } else {
-                h.classList.remove("reveal");
+                h.classList.replace("hide", "show");
             }
         });
+        if (isElementVisible(elements.intdv)) {
+            elements.intdv.classList.replace("hide", "show");
+        }
     }
     function isElementVisible(element) {
         const rect = element.getBoundingClientRect();
@@ -47,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
             rect.right <= window.innerWidth
         );
     }
-    checkVisibility();
+    setTimeout(checkVisibility, 450);
     elements.notiHolder.innerHTML = "<span>You Have No New Notification</span>";
     elements.sideLi.forEach((li) => {
         li.addEventListener("click", () => {
