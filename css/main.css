@@ -647,7 +647,7 @@ ul {
     font-family: "Aref Ruqaa";
     color: var(--dark-color);
 }
-/* Notification Styles */
+/* Notification*/
 .header .cont-pref .notification {
     position: relative;
     cursor: pointer;
