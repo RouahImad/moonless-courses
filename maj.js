@@ -204,6 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
         }
     });
+    // clicking the search icon make the input blur. when searching on phone clicking the icon will make the input blur without sliding to the result
     function handFocus() {
         elements.search.classList.add("focused");
     }
