@@ -581,7 +581,7 @@ ul {
     padding: 7px 2px 1px;
 }
 .intro .search .box:has(input.focused) label {
-    transform: translateY(20px);
+    transform: translateY(30px);
 }
 .intro .search .box input {
     border: none;
