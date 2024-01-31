@@ -124,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "active"
             )
         );
+        elements.search.classList.remove("focused");
     });
     elements.sm.forEach((s) => {
         s.addEventListener("click", () => {
@@ -187,34 +188,35 @@ document.addEventListener("DOMContentLoaded", function () {
     elements.search.addEventListener("click", handFocus);
     elements.search.addEventListener("select", handFocus);
     elements.searchIcon.onclick = () => {
+        window.scrollTo(0, 0);
         handleSearch();
     };
     elements.search.addEventListener("keydown", (e) => {
         elements.closeNoti.click();
-        if (
-            (e.key === "Enter" && elements.search.value.length >= 3) ||
-            (e.key === "Enter" && elements.search.value.includes("#"))
-        ) {
-            window.scrollTo(0, 0);
-            handleSearch();
+        if (e.key === "Enter") {
+            elements.searchIcon.click();
         }
         if (elements.reg.test(e.key)) {
             e.preventDefault();
         }
-        handFocus();
     });
     function handFocus() {
         elements.search.classList.add("focused");
     }
     document.addEventListener("click", (e) => {
-        if (!elements.search.contains(e.target)) {
-            elements.search.classList.remove("focused");
+        if (e.type === "click") {
+            if (
+                !elements.search.contains(e.target) &&
+                e.target !== elements.search &&
+                document.activeElement !== elements.search
+            ) {
+                elements.search.classList.remove("focused");
+            }
         }
     });
     function handleSearch() {
         if (
-            (elements.search.value !== "" &&
-                elements.search.value.length >= 3) ||
+            elements.search.value.length >= 3 ||
             elements.search.value.includes("#")
         ) {
             validate(
@@ -257,16 +259,20 @@ document.addEventListener("DOMContentLoaded", function () {
                     e.classList.add("found");
                     e.scrollIntoView();
                     elements.notification.classList.remove("clicked");
-                } else if (e.getAttribute("data-search").includes(v)) {
-                    valar.push(e);
-                    elements.notiHolder.innerHTML = "";
-                    elements.not.classList.add("active");
-                    elements.notiHolder.append(ulNoti);
-                    elements.notiHolder.firstElementChild.innerHTML += `<li class="Noti${srid}">${e.innerText
-                        .split("\n")
-                        .splice(0, 1)} (${srid})</li>`;
-                    notiSliding(valar, bodySearch);
-                    elements.notification.classList.add("clicked");
+                    console.log(1);
+                } else {
+                    if (e.getAttribute("data-search").includes(v)) {
+                        console.log(2);
+                        valar.push(e);
+                        elements.notiHolder.innerHTML = "";
+                        elements.notiHolder.append(ulNoti);
+                        elements.notiHolder.firstElementChild.innerHTML += `<li class="Noti${srid}">${e.innerText
+                            .split("\n")
+                            .splice(0, 1)} (${srid})</li>`;
+                        notiSliding(valar, bodySearch);
+                        elements.notification.click();
+                        elements.notification.classList.add("clicked");
+                    }
                 }
             });
         });
@@ -290,8 +296,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
     elements.notification.addEventListener("click", () => {
-        //here
-        elements.search.classList.remove("focused");
         elements.search.blur();
         elements.not.classList.add("active");
     });
