@@ -50,7 +50,9 @@ document.addEventListener("DOMContentLoaded", function () {
             rect.right <= window.innerWidth
         );
     }
-    setTimeout(checkVisibility, 450);
+    setTimeout(function () {
+        checkVisibility();
+    }, 450);
     elements.notiHolder.innerHTML = "<span>You Have No New Notification</span>";
     elements.sideLi.forEach((li) => {
         li.addEventListener("click", () => {
