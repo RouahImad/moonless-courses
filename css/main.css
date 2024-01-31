@@ -359,6 +359,7 @@ ul {
 }
 #about .infos img {
     width: 180px;
+    height: 180px;
     border-radius: 50%;
     box-shadow: 0px 0px 4px 1px var(--dark-color);
     transition: var(--main-transition);
@@ -760,6 +761,7 @@ ul {
 }
 .header .theme img {
     width: 30px;
+    height: 30px;
     display: block;
     transition: var(--main-transition);
 }
