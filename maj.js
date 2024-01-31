@@ -290,6 +290,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
     elements.notification.addEventListener("click", () => {
+        //here
+        elements.search.classList.remove("focused");
+        elements.search.blur();
         elements.not.classList.add("active");
     });
     elements.closeNoti.addEventListener("click", () => {
