@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 h.classList.replace("hide", "show");
             }
         });
-        if (isElementVisible(elements.intdv)) {
+        if (window.scrollY < 300) {
             elements.intdv.classList.replace("hide", "show");
         }
     }
@@ -50,9 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
             rect.right <= window.innerWidth
         );
     }
-    setTimeout(function () {
-        checkVisibility();
-    }, 450);
+    setTimeout(checkVisibility, 451);
     elements.notiHolder.innerHTML = "<span>You Have No New Notification</span>";
     elements.sideLi.forEach((li) => {
         li.addEventListener("click", () => {
