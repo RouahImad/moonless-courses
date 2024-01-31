@@ -192,17 +192,16 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     elements.search.addEventListener("click", handFocus);
     elements.search.addEventListener("select", handFocus);
-    elements.searchIcon.onclick = () => {
-        window.scrollTo(0, 0);
-        handleSearch();
-    };
-    elements.search.addEventListener("keydown", (e) => {
+    elements.searchIcon.addEventListener("click", handleSearch);
+    elements.search.addEventListener("keyup", function (event) {
+        event.preventDefault();
         elements.closeNoti.click();
-        if (e.key === "Enter") {
-            elements.searchIcon.click();
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            handleSearch();
         }
-        if (elements.reg.test(e.key)) {
-            e.preventDefault();
+        if (elements.reg.test(event.key)) {
+            event.preventDefault();
         }
     });
     function handFocus() {
@@ -220,6 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
     function handleSearch() {
+        window.scrollTo(0, 0);
         if (
             elements.search.value.length >= 3 ||
             elements.search.value.includes("#")
@@ -246,6 +246,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const ulNoti = document.createElement("ul");
         searchId.forEach((srid) => {
             let bodySearch = document.querySelectorAll(`body #${srid}s .mod`);
+            let check = false;
             bodySearch.forEach((e) => {
                 if (
                     e.innerText
@@ -256,6 +257,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         .replace(/[\u0300-\u036f]/g, "")
                         .toLowerCase() === v
                 ) {
+                    check = true;
                     if (!e.parentElement.classList.contains("ac")) {
                         e.parentElement.firstElementChild.firstElementChild.click();
                     }
@@ -264,10 +266,16 @@ document.addEventListener("DOMContentLoaded", function () {
                     e.classList.add("found");
                     e.scrollIntoView();
                     elements.notification.classList.remove("clicked");
-                    console.log(1);
                 } else {
-                    if (e.getAttribute("data-search").includes(v)) {
-                        console.log(2);
+                    if (
+                        e
+                            .getAttribute("data-search")
+                            .normalize("NFD")
+                            .replace(/[\u0300-\u036f]/g, "")
+                            .toLowerCase()
+                            .includes(v) &&
+                        !check
+                    ) {
                         valar.push(e);
                         elements.notiHolder.innerHTML = "";
                         elements.notiHolder.append(ulNoti);
