@@ -807,7 +807,7 @@ body.dark .header .theme img {
     border-radius: 50%;
     border: 3px solid;
     border-color: transparent var(--highlight-color) transparent transparent;
-    animation: load 0.3s 6;
+    animation: load 0.3s infinite;
 }
 @keyframes load {
     12.5% {

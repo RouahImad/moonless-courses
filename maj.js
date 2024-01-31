@@ -28,6 +28,11 @@ window.addEventListener("load", () => {
     elements.load.classList.add("fade");
 });
 document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+        elements.load
+            .querySelector(".loader")
+            .style.setProperty("animation-play-state", "paused");
+    }, 1000);
     elements.elRev.forEach((h) => {
         h.classList.add("hide");
     });
