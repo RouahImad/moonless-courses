@@ -21,6 +21,11 @@ const elements = {
     load: document.querySelector(".boxload"),
 };
 window.addEventListener("load", () => {
+    if (matchMedia("(prefers-color-scheme: dark)").matches) {
+        if (localStorage.theme == "light") {
+            elements.darklight.click();
+        }
+    }
     elements.load.classList.add("fade");
 });
 document.addEventListener("DOMContentLoaded", function () {
