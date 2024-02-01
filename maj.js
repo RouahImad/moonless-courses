@@ -314,13 +314,18 @@ document.addEventListener("DOMContentLoaded", function () {
         elements.not.classList.remove("active");
     });
     if (localStorage) {
-        window.addEventListener("load", () => {
-            if (matchMedia("(prefers-color-scheme: dark)").matches) {
+        const darkModeMediaQuery = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        );
+        function handleThemeChange(e) {
+            if (e.matches) {
                 if (localStorage.getItem("theme") === "light") {
                     toggleTheme();
                 }
             }
-        });
+        }
+        handleThemeChange(darkModeMediaQuery);
+        darkModeMediaQuery.addEventListener("change", handleThemeChange);
         elements.darklight.addEventListener("click", () => {
             toggleTheme();
         });
