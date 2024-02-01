@@ -21,11 +21,6 @@ const elements = {
     load: document.querySelector(".boxload"),
 };
 window.addEventListener("load", () => {
-    if (matchMedia("(prefers-color-scheme: dark)").matches) {
-        elements.darklight.lastElementChild.textContent = "dark";
-        localStorage.setItem("theme", "dark");
-        document.body.classList.add("dark")
-    }
     elements.load.classList.add("fade");
 });
 document.addEventListener("DOMContentLoaded", function () {
