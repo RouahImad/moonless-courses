@@ -189,7 +189,9 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     elements.search.addEventListener("click", handFocus);
     elements.search.addEventListener("select", handFocus);
-    elements.searchIcon.addEventListener("click", handleSearch);
+    elements.searchIcon.addEventListener("click", () => {
+        handleSearch();
+    });
     elements.search.addEventListener("keyup", function (event) {
         event.preventDefault();
         elements.closeNoti.click();
@@ -201,7 +203,6 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
         }
     });
-    // clicking the search icon make the input blur. when searching on phone clicking the icon will make the input blur without sliding to the result
     function handFocus() {
         elements.search.classList.add("focused");
     }
@@ -209,9 +210,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (e.type === "click") {
             if (
                 !elements.search.contains(e.target) &&
+                !elements.searchIcon.contains(e.target) &&
                 e.target !== elements.search &&
+                e.target !== elements.searchIcon &&
                 document.activeElement !== elements.search
             ) {
+                // removing the class
                 elements.search.classList.remove("focused");
             }
         }
