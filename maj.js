@@ -21,11 +21,6 @@ const elements = {
     load: document.querySelector(".boxload"),
 };
 window.addEventListener("load", () => {
-    if (matchMedia("(prefers-color-scheme: dark)").matches) {
-        if (localStorage.theme == "light") {
-            elements.darklight.click();
-        }
-    }
     elements.load.classList.add("fade");
 });
 document.addEventListener("DOMContentLoaded", function () {
@@ -318,25 +313,33 @@ document.addEventListener("DOMContentLoaded", function () {
     elements.closeNoti.addEventListener("click", () => {
         elements.not.classList.remove("active");
     });
-    elements.darklight.addEventListener("click", () => {
-        let themeVal;
+    if (localStorage) {
+        window.addEventListener("load", () => {
+            if (matchMedia("(prefers-color-scheme: dark)").matches) {
+                if (localStorage.getItem("theme") === "light") {
+                    toggleTheme();
+                }
+            }
+        });
+        elements.darklight.addEventListener("click", () => {
+            toggleTheme();
+        });
+        if (localStorage.getItem("theme")) {
+            if (
+                !document.body.classList.contains("dark") &&
+                localStorage.getItem("theme") === "dark"
+            ) {
+                toggleTheme();
+            }
+        }
+    }
+    function toggleTheme() {
         document.body.classList.toggle("dark");
-        if (document.body.classList.contains("dark")) {
-            elements.darklight.lastElementChild.textContent = "dark";
-            themeVal = "dark";
-        } else {
-            elements.darklight.lastElementChild.textContent = "light";
-            themeVal = "light";
-        }
+        const themeVal = document.body.classList.contains("dark")
+            ? "dark"
+            : "light";
+        elements.darklight.lastElementChild.textContent = themeVal;
         localStorage.setItem("theme", themeVal);
-    });
-    if (localStorage.getItem("theme")) {
-        if (
-            !document.body.classList.contains("dark") &&
-            localStorage.theme == "dark"
-        ) {
-            elements.darklight.click();
-        }
     }
     function timing() {
         let date = new Date();
