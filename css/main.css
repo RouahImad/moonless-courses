@@ -10,16 +10,6 @@
     --dark-color: #333;
     --white-color: #fff;
 }
-@media (prefers-color-scheme: dark) {
-    body {
-        --main-color: #494947;
-        --second-color: #2b261b;
-        --button-color: #afc8ad;
-        --highlight-color: #88ab8e;
-        --dark-color: #fff;
-        --white-color: #000;
-    }
-}
 body.dark {
     --main-color: #494947;
     --second-color: #2b261b;
