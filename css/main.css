@@ -151,10 +151,12 @@ ul {
 .content .header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     min-height: 50px;
     background-color: var(--second-color);
+    padding: 0 25px;
 }
-.content .go img {
+.content .go {
     cursor: pointer;
     width: 50px;
     display: none;
@@ -167,9 +169,9 @@ ul {
     -webkit-filter: drop-shadow(0px 0px 3px var(--dark-color));
     filter: drop-shadow(0px 0px 3px var(--dark-color));
 }
-.content .go img.clicked {
+.content .go.clicked {
 }
-.content .go img:hover {
+.content .go:hover {
     animation: updown 650ms infinite;
 }
 @keyframes updown {
@@ -333,9 +335,6 @@ ul {
 .gi ul .mod .sub li:hover {
     margin-left: 5px;
 }
-#about {
-    position: relative;
-}
 #about .mug {
     font-family: "Aref Ruqaa";
     position: absolute;
@@ -359,10 +358,9 @@ ul {
 }
 #about .infos img {
     width: 180px;
-    height: 180px;
+    height: auto;
     border-radius: 50%;
     box-shadow: 0px 0px 4px 1px var(--dark-color);
-    transition: var(--main-transition);
     -webkit-animation: glow 3s infinite;
     animation: glow 3s infinite;
     margin-right: 35px;
@@ -495,13 +493,6 @@ ul {
     grid-row-start: 5;
     grid-row-end: 13;
 }
-.header .container {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 25px;
-}
 #battery {
     box-sizing: content-box;
     position: relative;
@@ -547,7 +538,6 @@ ul {
     }
 }
 .intro .search {
-    width: fit-content;
     margin: 0 auto;
     display: flex;
     gap: 15px;
@@ -618,6 +608,7 @@ ul {
     transition: var(--main-transition);
     display: flex;
     gap: 20px;
+    text-transform: capitalize;
 }
 @media (max-width: 370px) {
     .intro .search .options {
@@ -630,9 +621,7 @@ ul {
 }
 .intro .search .options input,
 .intro .search .options label {
-    transition: var(--main-transition);
     cursor: pointer;
-    text-transform: capitalize;
 }
 .intro .search .options div {
     display: flex;
@@ -648,11 +637,9 @@ ul {
     font-family: "Aref Ruqaa";
     color: var(--dark-color);
 }
-/* Notification*/
 .header .cont-pref .notification {
     position: relative;
     cursor: pointer;
-    color: var(--dark-color);
 }
 .header .cont-pref .notification.clicked::before {
     content: "";
@@ -673,7 +660,6 @@ ul {
         opacity: 0;
     }
 }
-/* Notification Div Styles */
 .notification-div {
     position: fixed;
     width: 700px;
@@ -748,7 +734,6 @@ ul {
     cursor: pointer;
     font-size: 14px;
 }
-/* Theme Styles */
 .header .theme {
     display: flex;
     align-items: center;
@@ -756,12 +741,9 @@ ul {
     font-weight: bold;
     cursor: pointer;
 }
-.header .theme .darklight {
-    color: var(--dark-color);
-}
 .header .theme img {
     width: 30px;
-    height: 30px;
+    height: auto;
     display: block;
     transition: var(--main-transition);
 }
@@ -769,7 +751,6 @@ body.dark .header .theme img {
     transform: rotate(1turn);
     filter: invert(1);
 }
-/* intro thing */
 .page .hide {
     visibility: hidden;
 }

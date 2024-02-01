@@ -3,7 +3,7 @@ const elements = {
     options: document.querySelectorAll(".intro .search .options input"),
     searchIcon: document.querySelector(".intro .search .box i"),
     sideLi: document.querySelectorAll(".sidebar ul li:has(> a) a"),
-    go: document.querySelector(".content .go img"),
+    go: document.querySelector(".content .go"),
     posin: document.querySelector(".page .posIn"),
     siLi: document.querySelectorAll(".content .wrapper > div"),
     mug: document.querySelector("#about .mug"),
@@ -91,6 +91,16 @@ document.addEventListener("DOMContentLoaded", function () {
             100;
         elements.posin.style.width = `${scrolled}%`;
     }
+    function going() {
+        if (window.scrollY < 350) {
+            elements.go.style.opacity = 0;
+            elements.go.style.display = "none";
+        } else {
+            elements.closeNoti.click();
+            elements.go.style.opacity = 1;
+            elements.go.style.display = "block";
+        }
+    }
     window.addEventListener("scroll", () => {
         posing();
         const { scrollHeight, scrollTop, clientHeight } =
@@ -100,14 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         checkVisibility();
         elements.sideLi.forEach((l) => l.classList.remove("active"));
-        if (window.scrollY < 350) {
-            elements.go.style.opacity = 0;
-            elements.go.style.display = "none";
-        } else {
-            elements.closeNoti.click();
-            elements.go.style.opacity = 1;
-            elements.go.style.display = "block";
-        }
+        going();
         let index;
         if (scrollTop >= elements.siLi[0].offsetTop - 80) {
             elements.siLi.forEach((e, i) => {
@@ -145,13 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const charge = document.getElementById("charge");
     window.onload = () => {
         posing();
-        if (window.scrollY < 350) {
-            elements.go.style.opacity = 0;
-            elements.go.style.display = "none";
-        } else {
-            elements.go.style.opacity = 1;
-            elements.go.style.display = "block";
-        }
+        going();
         if (!navigator.getBattery) {
             console.log("Battery status API is not supported");
             return false;
