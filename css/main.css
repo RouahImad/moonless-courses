@@ -283,7 +283,7 @@ ul {
 .gi ul.ac .mod {
     margin-bottom: 10px;
 }
-.gi ul.ac li:not(:first-of-type) {
+.gi ul.ac > li:not(:first-of-type) {
     max-height: 500px;
     padding: 5px 10px;
 }
@@ -308,7 +308,6 @@ ul {
     transition: 0.4s;
     margin-left: 20px;
     cursor: pointer;
-    position: relative;
     max-height: 0;
     padding: 0;
     overflow: hidden;
@@ -317,7 +316,6 @@ ul {
     max-height: 500px;
 }
 .gi ul .mod .sub li {
-    position: relative;
     transition: var(--main-transition);
 }
 .gi ul .mod .sub li:hover {
