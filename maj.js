@@ -2,7 +2,7 @@ const elements = {
     search: document.querySelector(".intro .search .box input"),
     options: document.querySelectorAll(".intro .search .options input"),
     searchIcon: document.querySelector(".intro .search .box i"),
-    sideLi: document.querySelectorAll(".sidebar ul li:has(> a) a"),
+    sideLi: document.querySelectorAll(".sidebar ul li:has(> a):not(.login) a"),
     go: document.querySelector(".content .go"),
     posin: document.querySelector(".page .posIn"),
     siLi: document.querySelectorAll(".content .wrapper > div"),
@@ -53,19 +53,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     setTimeout(checkVisibility, 451);
     elements.notiHolder.innerHTML = "<span>You Have No New Notification</span>";
-    elements.sideLi.forEach((li) => {
+    elements.sideLi.forEach((li, i) => {
         li.addEventListener("click", () => {
             elements.sideLi.forEach((l) => l.classList.remove("active"));
             li.classList.add("active");
-        });
-        if (!elements.sideLi[1].classList.contains("active")) {
-            li.addEventListener("mouseenter", () => li.classList.add("active"));
-            li.addEventListener("mouseleave", () =>
-                li.classList.remove("active")
+            window.scrollTo(
+                0,
+                elements.siLi[i].offsetTop - window.innerHeight / 4.1
             );
-        }
+        });
     });
     elements.mon.addEventListener("click", () => {
+        window.scrollTo(0, 0);
         elements.sideLi.forEach((li) => li.classList.remove("active"));
     });
     elements.go.addEventListener("click", () => {
@@ -98,6 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
     window.addEventListener("scroll", () => {
+        elements.sideLi.forEach((l) => l.classList.remove("active"));
         posing();
         const { scrollHeight, scrollTop, clientHeight } =
             document.documentElement;
@@ -105,26 +105,25 @@ document.addEventListener("DOMContentLoaded", function () {
             elements.closeNoti.click();
         }
         checkVisibility();
-        elements.sideLi.forEach((l) => l.classList.remove("active"));
         going();
-        let index;
-        if (scrollTop >= elements.siLi[0].offsetTop - 80) {
+        let index = null;
+        if (scrollTop >= elements.siLi[0].offsetTop - window.innerHeight / 4) {
             elements.siLi.forEach((e, i) => {
                 if (e.offsetTop - 230 <= scrollTop) {
                     index = i;
                 }
             });
-            elements.sideLi[index].classList.add("active");
+            if (index != null) elements.sideLi[index].classList.add("active");
         }
         if (scrollHeight <= (scrollTop + clientHeight + 60).toFixed()) {
             elements.sideLi.forEach((e) => {
                 e.classList.remove("active");
             });
-            elements.sideLi[elements.sideLi.length - 2].classList.add("active");
+            elements.sideLi[elements.sideLi.length - 1].classList.add("active");
         }
         elements.mug.classList.toggle(
             "mugetsu",
-            elements.sideLi[elements.sideLi.length - 2].classList.contains(
+            elements.sideLi[elements.sideLi.length - 1].classList.contains(
                 "active"
             )
         );
@@ -211,7 +210,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 e.target !== elements.searchIcon &&
                 document.activeElement !== elements.search
             ) {
-                // removing the class
                 elements.search.classList.remove("focused");
             }
         }

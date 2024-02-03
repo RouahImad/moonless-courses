@@ -120,9 +120,8 @@ ul {
     padding: 6px;
     display: block;
     width: 100%;
-}
-.sidebar ul li:has(> a) a {
     transition: var(--main-transition);
+    cursor: pointer;
 }
 .sidebar ul li:has(> a) a.active {
     background-color: var(--highlight-color);
