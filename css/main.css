@@ -320,6 +320,9 @@ ul {
 .gi ul .mod .sub li:hover {
     margin-left: 5px;
 }
+#about {
+    position: relative;
+}
 #about .mug {
     font-family: "Aref Ruqaa";
     position: absolute;
