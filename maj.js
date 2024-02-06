@@ -146,6 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
         going();
         if (!navigator.getBattery) {
             console.log("Battery status API is not supported");
+            document.getElementById("battery").style.display = "none";
             return false;
         }
         navigator.getBattery().then((battery) => {
