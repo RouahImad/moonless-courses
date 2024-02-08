@@ -113,9 +113,19 @@ ul {
 .sidebar ul li:has(> a) {
     width: 93%;
     text-align: center;
+    transition: var(--main-transition);
+    border-radius: 6px;
+    margin-bottom: 5px;
+}
+@media (hover: hover) {
+    .sidebar ul li:has(> a):hover {
+        background-color: var(--highlight-color);
+    }
+    .sidebar ul li:has(> a):hover a {
+        color: var(--white-color);
+    }
 }
 .sidebar ul li:has(> a) a {
-    margin-bottom: 5px;
     border-radius: 5px;
     padding: 6px;
     display: block;
