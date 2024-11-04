@@ -291,6 +291,13 @@ ul {
     overflow: hidden;
     color: var(--dark-color);
 }
+#tools .gi > ul li {
+    max-height: 500px;
+    padding: 5px 10px;
+}
+#tools .gi > ul .mod {
+    margin-bottom: 10px;
+}
 .gi ul.ac .mod {
     margin-bottom: 10px;
 }
